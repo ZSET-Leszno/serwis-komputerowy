@@ -30,7 +30,7 @@ ul
 {
     height: 80px;
     width: max-content;
-
+    text-align: center;
 }
 
 ul:hover

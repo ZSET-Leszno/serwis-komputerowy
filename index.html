@@ -10,14 +10,21 @@
 <body>
     <header>
         <nav>
-            <ul><a href="index.html">Strona główna</a></ul>
-            <ul><a href="login.html">Logowanie</a></ul>
             <ul><a href="client.html">Usługi</a></ul>
+            <ul><a href="index.html">Strona główna</a></ul>
         </nav>
     </header>
 
         <section class="left">
-            Empty
+            <h2>Zaloguj się</h2>
+            <form method="post" action="login.php">
+                Login
+                <input type="text" name="login"><br>
+                Hasło
+                <input type="password" name="passwd"><br>
+                <br>
+                <input type="submit" name="submit" value="Zaloguj się">
+            </form>
         </section>
 
         <section class="right">

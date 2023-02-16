@@ -1,40 +1,66 @@
-header, footer 
-{
-    padding: 10px;
+body {
     width: 100%;
-    height: 100px;
+}
+header
+{
+    font-size: 22px;
+    text-align: center;
+    clear: both;
+    width: 100%;
+    height: 80px;
     background-color: rgb(0, 0, 46);
     color: white;
 }
 
-.left
-{
-    width: 20%;
-    float: left;
-}
-
-.right 
-{
-    float: left;
-    width: 80%;
-    background-color: rgb(59, 59, 59);
-    color: whitesmoke;
-    text-align: center;
-}
-
-nav 
-{
-    display: flex;
-}
-
 ul 
 {
-    height: 80px;
-    width: max-content;
+    float: left;
+    height: 20px;
     text-align: center;
+    margin: 15px;
+    padding: 15px;
 }
 
 ul:hover
 {
-    background-color: rgb(0, 0, 128)
+    background-color: rgb(0, 0, 92)
+}
+
+.left
+{
+    padding-top: 100px;
+    background-color: lightblue;
+    text-align: center;
+    float: left;
+    width: 16%;
+    height: 600px;
+}
+
+.right 
+{
+    padding-top: 100px;
+    height: 600px;
+    float: left;
+    width: 84%;
+    background-color: grey;
+    text-align: center;
+}
+
+
+a 
+{
+    color: inherit;
+    text-decoration: none;
+}
+footer
+{
+    text-align: center;
+    clear: both;
+    width: 100%;
+    font-size: 18px;
+    height: 20px;
+    background-color: rgb(0, 0, 46);
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

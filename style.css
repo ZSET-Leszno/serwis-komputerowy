@@ -48,6 +48,7 @@ body
 	border-right: 2px dotted #cccccc;
 }
 
+
 #topbarR
 {
 	float: left;
@@ -55,10 +56,22 @@ body
 	width: 760px;
 	font-size: 16px;
 	text-align: justify;
+
+header
+{
+    font-size: 22px;
+    text-align: center;
+    clear: both;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+
 }
 
 #sidebar
 {
+
 	float: left;
 	width: 148px;
 	min-height: 620px;
@@ -67,10 +80,18 @@ body
 	text-align: center;
 	font-size: 18px;
 	border-right: 2px dotted #666666;
+
+    float: right;
+    height: 20px;
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+
 }
 
 #content
 {
+
 	float: left;
 	padding: 40px;
 	width: 730px;
@@ -97,6 +118,30 @@ body
 	padding: 10px;
 	border-right: 2px dotted #444444;
 	opacity: 0.8;
+
+    background-color: black
+}
+
+.left
+{
+    padding-top: 20px;
+    background-color: rgb(49, 68, 95);
+    color: white;
+    text-align: center;
+    float: left;
+    width: 16%;
+    height: 600px;
+}
+
+.right 
+{
+    padding-top: 20px;
+    height: 600px;
+    float: left;
+    width: 84%;
+    background-color: skyblue;
+    text-align: center;
+
 }
 
 .option:hover
@@ -112,6 +157,7 @@ body
 	padding: 10px;
 	border-bottom: 2px dotted #444444;
 }
+
 
 .optionL:hover
 {
@@ -133,4 +179,32 @@ body
 	margin-top: 15px;
 	margin-bottom: 20px;
 	border-bottom: 2px dotted #444444;
+
+footer
+{
+    text-align: center;
+    clear: both;
+    width: 100%;
+    font-size: 18px;
+    height: 20px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+h1
+{
+    margin: 25px;
+}
+
+h2
+{
+    margin: 20px;
+}
+
+h3
+{
+    margin: 15px;
+
 }

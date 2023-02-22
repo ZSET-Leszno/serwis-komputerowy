@@ -55,14 +55,16 @@ body
 	width: 760px;
 	font-size: 16px;
 	text-align: justify;
+
+	line-height: 23px;
 }
 
 #sidebar
 {
 	float: left;
 	width: 148px;
-	min-height: 620px;
-	padding:20px;
+	height: 1100px;
+	padding: 20px 20px 60px 20px;
 	background-color: lightgray;
 	text-align: center;
 	font-size: 18px;
@@ -75,8 +77,9 @@ body
 	padding: 40px;
 	width: 730px;
 	background-color: #dedede;
-	min-height: 580px;
+	height: 1100px;
 	text-align: justify;
+	line-height: 23px;
 }
 
 #footer
@@ -86,6 +89,8 @@ body
 	text-align: center;
 	padding: 20px;
 	font-size: 15px;
+
+	line-height: 23px;
 }
 
 .option
@@ -95,7 +100,7 @@ body
 	height: 25px;
 	font-size: 18px;
 	padding: 10px;
-	border-right: 2px dotted #444444;
+	/* border-right: 2px dotted #444444; */
 	opacity: 0.8;
 }
 

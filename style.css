@@ -120,9 +120,15 @@ body
 
 .optionL:hover
 {
-	background-color: #f36742;
+	background-color: #429ef3;
 	color: white;
 	cursor: pointer;
+}
+
+.optionL>a
+{
+	color: black;
+	text-decoration: none;
 }
 
 .bigtitle

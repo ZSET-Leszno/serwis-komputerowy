@@ -50,8 +50,13 @@
 		</div>
 		
 		<div id="menu">
-			<a href="register.php" target="_blank"><div class="option">Zarejestruj się</div></a>
-			<div class="option">Zaloguj się</div>
+			<a href="register.php" target="_blank">
+				<div class="option">Zarejestruj się</div>
+			</a>
+
+			<a href="login.php">
+				<div class="option">Zaloguj się</div>
+			</a>
 			<div style="clear:both;"></div>
 		</div>
 		
@@ -68,21 +73,29 @@
 		</div>
 		
 		<div id="sidebar">
-			<div class="optionL">
-				<a href="index.html">Strona główna</a>
-			</div>
+			<a href="index.html">
+				<div class="optionL">
+					Strona główna
+				</div>
+			</a>
 
-			<div class="optionL">
-				<a href="uslugi.html">Usługi</a>
-			</div>
+			<a href="uslugi.php">
+				<div class="optionL">
+					Usługi
+				</div>
+			</a>
 
-			<div class="optionL">
-				<a href="lokalizacja.html">Lokalizacja</a>
-			</div>
+			<a href="lokalizacja.html">
+				<div class="optionL">
+					Lokalizacja
+				</div>
+			</a>
 
-			<div class="optionL">
-				<a href="partnerzy.html">Partnerzy</a>
-			</div>
+			<a href="partnerzy.html">
+				<div class="optionL">
+					Partnerzy
+				</div>
+			</a>
 		</div>
 		
 		<div id="content">

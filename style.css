@@ -63,7 +63,7 @@ body
 {
 	float: left;
 	width: 148px;
-	height: 1100px;
+	height: 1050px;
 	padding: 20px 20px 60px 20px;
 	background-color: lightgray;
 	text-align: center;
@@ -77,7 +77,7 @@ body
 	padding: 40px;
 	width: 730px;
 	background-color: #dedede;
-	height: 1100px;
+	height: 1050px;
 	text-align: justify;
 	line-height: 23px;
 }
@@ -120,12 +120,12 @@ body
 
 .optionL:hover
 {
-	background-color: #429ef3;
+	background-color: #0e6b59;
 	color: white;
 	cursor: pointer;
 }
 
-.optionL>a
+#sidebar>a
 {
 	color: black;
 	text-decoration: none;

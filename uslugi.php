@@ -45,7 +45,7 @@
 			<div style="clear:both;"></div>
 		</div>
 		
-		<div id="sidebar">
+		<div id="sidebar" style="height: 1300px;">
 			<a href="index.html">
 				<div class="optionL">
 					Strona główna
@@ -71,7 +71,7 @@
 			</a>
 		</div>
 		
-		<div id="content">
+		<div id="content" style="height: 1300px;">
 			<span class="bigtitle">Nasze usługi</span>
 			
 			<div class="dottedline"></div>
@@ -86,29 +86,30 @@
 				
                 <tbody>
 				<?php
-					$link = mysqli_connect("s6.cyber-folks.pl", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+					$link = mysqli_connect("localhost", "root", "", "pcexpress");
 
 					if (!$link)
 					{
 						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
 					}
-					
-					mysqli_query($link, "SELECT `nazwa`, `cena` FROM `uslugi`;");
 
-					while ($r = mysqli_fetch_row($link))
+					
+					$result = mysqli_query($link, "SELECT nazwa, cena FROM uslugi;");
+
+					while ($row = mysqli_fetch_row($result))
 					{
 						echo "<tr>";
-							
-						foreach($r as $item)
+
+						foreach ($row as $item)
 						{
-							echo "<td>". $item ." zł</td>";
+							echo "<td>". $item ."</td>";
 						}
 
-						echo "/tr";
+						echo "</tr>";
 					}
 
 					mysqli_close($link);
-				  ?>
+				?>
                 </tbody>
               </table>
 		</div>	

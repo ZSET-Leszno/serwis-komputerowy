@@ -175,7 +175,7 @@ td:last-child
 	text-align: right;
 }
 
-a:visited
+#menu>a:visited
 {
 	color: white;
 }

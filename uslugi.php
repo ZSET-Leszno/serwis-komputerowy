@@ -23,7 +23,7 @@
 		</div>
 		
 		<div id="menu">
-			<div class="option">Zarejestruj się</div>
+			<a href="register.php" target="_blank"><div class="option">Zarejestruj się</div></a>
 			<div class="option">Zaloguj się</div>
 			<div style="clear:both;"></div>
 		</div>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="optionL">
-				<a href="uslugi.html"><b>Usługi</b></a>
+				<a href="uslugi.php"><b>Usługi</b></a>
 			</div>
 
 			<div class="optionL">
@@ -59,6 +59,10 @@
 		</div>
 		
 		<div id="content">
+			<span class="bigtitle">Nasze usługi</span>
+			
+			<div class="dottedline"></div>
+
             <table>
                 <thead>
                   <tr>
@@ -66,8 +70,32 @@
                     <th>Cena</th>
                   </tr>
                 </thead>
+				
                 <tbody>
-                  
+				<?php
+					$link = mysqli_connect("s6.cyber-folks.pl", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+
+					if (!$link)
+					{
+						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+					}
+					
+					mysqli_query($link, "SELECT `nazwa`, `cena` FROM `uslugi`;");
+
+					while ($r = mysqli_fetch_row($link))
+					{
+						echo "<tr>";
+							
+						foreach($r as $item)
+						{
+							echo "<td>". $item ." zł</td>";
+						}
+
+						echo "/tr";
+					}
+
+					mysqli_close($link);
+				  ?>
                 </tbody>
               </table>
 		</div>	

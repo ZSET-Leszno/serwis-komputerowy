@@ -205,3 +205,8 @@ tr:hover
 	color: #128870;
 	margin-left: 40px;
 }
+
+.partnerlink>b>a
+{
+	color: #044134;
+}

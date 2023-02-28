@@ -64,7 +64,7 @@
 				</div>
 			</a>
 
-			<a href="partnerzy.html">
+			<a href="partnerzy.php">
 				<div class="optionL">
 					<b>Partnerzy</b>
 				</div>

@@ -45,7 +45,7 @@
 			<div style="clear:both;"></div>
 		</div>
 		
-		<div id="sidebar" style="height: 1300px;">
+		<div id="sidebar">
 			<a href="index.html">
 				<div class="optionL">
 					Strona główna
@@ -54,7 +54,7 @@
 
 			<a href="uslugi.php">
 				<div class="optionL">
-					<b>Usługi</b>
+					Usługi
 				</div>
 			</a>
 
@@ -66,26 +66,17 @@
 
 			<a href="partnerzy.html">
 				<div class="optionL">
-					Partnerzy
+					<b>Partnerzy</b>
 				</div>
 			</a>
 		</div>
 		
-		<div id="content" style="height: 1300px;">
-			<span class="bigtitle">Nasze usługi</span>
+		<div id="content">
+			<span class="bigtitle">Nasi partnerzy</span>
 			
 			<div class="dottedline"></div>
-
-            <table id="uslugi">
-                <thead>
-                  <tr>
-                    <th>Usługa</th>
-                    <th>Cena</th>
-                  </tr>
-                </thead>
-				
-                <tbody>
-				<?php
+			
+			<?php
 					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
 					if (!$link)
@@ -110,8 +101,7 @@
 
 					mysqli_close($link);
 				?>
-                </tbody>
-              </table>
+			
 		</div>	
 		
 		<div id="footer">
@@ -143,6 +133,7 @@
 
  
 		</div>
+	
 	</div>
 	
 </body>

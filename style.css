@@ -190,11 +190,6 @@ tr:hover
 	text-align: center;
 }
 
-#partnerzy>tr>td:last-child
-{
-	text-align: right;
-}
-
 #menu>a
 {
 	color: white;

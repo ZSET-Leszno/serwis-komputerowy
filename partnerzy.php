@@ -90,7 +90,7 @@
 
 					while ($row = mysqli_fetch_row($result))
 					{
-						echo """;<a href='". $row[0] ."'>";
+						echo "<a href='". $row[0] ."'>";
 						echo "<tr>";
 
 						

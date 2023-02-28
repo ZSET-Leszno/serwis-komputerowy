@@ -76,7 +76,7 @@
 			
 			<div class="dottedline"></div>
 
-            <table>
+            <table id="uslugi">
                 <thead>
                   <tr>
                     <th>Usługa</th>
@@ -86,7 +86,7 @@
 				
                 <tbody>
 				<?php
-					$link = mysqli_connect("localhost", "root", "", "pcexpress");
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
 					if (!$link)
 					{

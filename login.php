@@ -12,20 +12,6 @@
 
 
 	<script>
-		function validatePassword() {
-			let password = document.getElementById("password").value;
-			let confirmPassword = document.getElementById("confirm-password").value;
-			let passwordError = document.getElementById("password-error");
-
-			if (password !== confirmPassword) {
-				passwordError.innerHTML = "Hasła nie są identyczne";
-				return false;
-			} else {
-				passwordError.innerHTML = "";
-				return true;
-			}
-		}
-
 		function validateEmail() {
 			let email = document.getElementById("email").value;
 			let emailError = document.getElementById("email-error");
@@ -108,8 +94,7 @@
 				<label for="email">Adres E-mail:</label><br>
 				<input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
 				<label for="password">Hasło:</label><br>
-				<input type="password" id="password" name="password" onblur="validatePassword()" required><br>
-				<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
+				<input type="password" id="password" name="password" required><br><br>
 				<input type="submit" value="Zaloguj się" name="submit">
 			</form>
     </div>

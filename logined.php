@@ -99,49 +99,53 @@
 		</div>
 		
 		<div id="content">
-			<span class="bigtitle">Zarejestruj się</span>
+			<span class="bigtitle">Zaloguj się</span>
 			
 			<div class="dottedline"></div>
-            <br><br>
+
 
 <?php
 if (isset($_POST['submit']))
 {
     //Utworzenie połączenia z db
 	$sql = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
-	if(!$sql)
+    if(!$sql)
     {
-		//Wyświetlenie błedu w wypadku braku połączenia
+        //Wyświetlenie błędu w wypadku braku połączenia
         die("Błąd połączenia z bazą danych: ".mysqli_error($sql));
     }
 
+
     //Pobranie danych z formularza
-	$firstname = $_POST["firstName"];
-	$lastname = $_POST["lastName"];
-	$city = $_POST["city"];
-	$address = $_POST["address"];
-	$phone = $_POST["phone"];
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
     //Szyfrowanie hasła
+
     $hashed_password = md5($password);
 
-    //Sprawdzenie czy adres email jest już w bazie
-    $check = mysqli_query($sql, "SELECT * FROM users WHERE email = '$email'");
-    if (mysqli_num_rows($check) == 0)
+    //Sprawdzenie wprowadzonych danych
+    $login = "SELECT * FROM `users` WHERE email = '$email' AND password = '$hashed_password;";
+    $action = mysqli_query($sql, $login);
+    $x = (mysqli_num_rows($action));
+    echo($x);
+
+    if ($action)
     {
-        //Wprowadzenie danych do bazy
-        $insert = "INSERT INTO `users`(`firstname`, `lastname`, `city`, `address`, `phone`, `email`, `password`) VALUES ('$firstname', '$lastname', '$city', '$address', '$phone', '$email', '$hashed_password')";
-        if (mysqli_query($sql, $insert));
-        {
-            echo("<h2 style='text-align: center;'>Zarejestrowano pomyślnie</h2>");
-        }
+        echo("Zalogowano pomyślnie");
     }
     else
     {
-        //Komunikat o tym że istnieje już konto o podanym adresie email
-        echo("<h2 style='text-align: center;'>Podany adres email jest zajęty</h2>");
+        echo
+        ('<form method="POST" action="logined.php">
+            <label for="email">Adres E-mail:</label><br>
+            <input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
+            <label for="password">Hasło:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Zaloguj się" name="submit">
+        </form>
+        <br><b>Wprowadzono niepoprawne dane</b>'
+        );
     }
     
     //Zamkniecie połączenia z db

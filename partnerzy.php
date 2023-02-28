@@ -45,7 +45,7 @@
 			<div style="clear:both;"></div>
 		</div>
 		
-		<div id="sidebar" style="height: 830px;">
+		<div id="sidebar">
 			<a href="index.html">
 				<div class="optionL">
 					Strona główna
@@ -60,27 +60,52 @@
 
 			<a href="lokalizacja.html">
 				<div class="optionL">
-					<b>Lokalizacja</b>
+					Lokalizacja
 				</div>
 			</a>
 
 			<a href="partnerzy.php">
 				<div class="optionL">
-					Partnerzy
+					<b>Partnerzy</b>
 				</div>
 			</a>
 		</div>
 		
-		<div id="content" style="height: 830px;">
-			<span class="bigtitle">Nasza lokalizacja</span>
+		<div id="content">
+			<span class="bigtitle">Nasi partnerzy</span>
 			
 			<div class="dottedline"></div>
 			
-			<p>
-                Zapraszamy do naszego serwisu komputerowego mieszczącego się w Lesznie na ulicy Leszczyńskich 27. Nasza lokalizacja znajduje się w dogodnym miejscu, niedaleko centrum miasta, co ułatwia dotarcie do nas zarówno samochodem, jak i komunikacją miejską. Oferujemy szeroki zakres usług związanych z naprawą i konserwacją sprzętu komputerowego, w tym także sprzedaż części i akcesoriów. Jesteśmy do Państwa dyspozycji od poniedziałku do piątku w godzinach 8:00 - 15:00, zapraszamy!
-            </p>
-            <br>
-            <iframe style="border: 5px solid #128870;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2465.0763525934326!2d16.572600551442523!3d51.841301293955524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4705983b277a0eeb%3A0xc38a0a509fc107bb!2sLeszczy%C5%84skich%2027%2C%2064-100%20Leszno!5e0!3m2!1spl!2spl!4v1677170484095!5m2!1spl!2spl" width="720" height="600" style="border: 0;;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<table>
+			<?php
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+
+					if (!$link)
+					{
+						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+					}
+
+					
+					$result = mysqli_query($link, "SELECT link, name, description FROM partners;");
+
+					while ($row = mysqli_fetch_row($result))
+					{
+						echo """;<a href='". $row[0] ."'>";
+						echo "<tr>";
+
+						
+						echo "<td width='100px'><b>". $row[1] ."</b></td>";
+						echo "<td>". $row[2] ."</td>";
+						
+
+						echo "</tr>";
+						echo "</a>";
+					}
+
+					mysqli_close($link);
+				?>
+			</table>
+			
 		</div>	
 		
 		<div id="footer">

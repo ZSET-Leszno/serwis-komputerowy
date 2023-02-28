@@ -64,7 +64,7 @@
 				</div>
 			</a>
 
-			<a href="partnerzy.html">
+			<a href="partnerzy.php">
 				<div class="optionL">
 					Partnerzy
 				</div>
@@ -76,7 +76,7 @@
 			
 			<div class="dottedline"></div>
 
-            <table>
+            <table id="uslugi">
                 <thead>
                   <tr>
                     <th>Usługa</th>
@@ -86,7 +86,7 @@
 				
                 <tbody>
 				<?php
-					$link = mysqli_connect("localhost", "root", "", "pcexpress");
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
 					if (!$link)
 					{
@@ -94,7 +94,7 @@
 					}
 
 					
-					$result = mysqli_query($link, "SELECT nazwa, cena FROM uslugi;");
+					$result = mysqli_query($link, "SELECT name, price FROM services;");
 
 					while ($row = mysqli_fetch_row($result))
 					{

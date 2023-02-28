@@ -180,16 +180,15 @@ tr:hover
 	background-color: #f5f5f5;
 }
   
-td:last-child::after
+#uslugi>tbody>tr>td:last-child::after
 {
 	content: " zł";
 }
 
-td:last-child
+#uslugi>tbody>tr>td:last-child
 {
 	text-align: center;
 }
-
 
 #menu>a
 {

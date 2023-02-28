@@ -76,6 +76,7 @@
 			
 			<div class="dottedline"></div>
 			
+			<table>
 			<?php
 					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
@@ -85,22 +86,25 @@
 					}
 
 					
-					$result = mysqli_query($link, "SELECT name, price FROM services;");
+					$result = mysqli_query($link, "SELECT link, name, description FROM partners;");
 
 					while ($row = mysqli_fetch_row($result))
 					{
+						echo """;<a href='". $row[0] ."'>";
 						echo "<tr>";
 
-						foreach ($row as $item)
-						{
-							echo "<td>". $item ."</td>";
-						}
+						
+						echo "<td width='100px'><b>". $row[1] ."</b></td>";
+						echo "<td>". $row[2] ."</td>";
+						
 
 						echo "</tr>";
+						echo "</a>";
 					}
 
 					mysqli_close($link);
 				?>
+			</table>
 			
 		</div>	
 		

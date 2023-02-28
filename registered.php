@@ -102,28 +102,50 @@
 			<span class="bigtitle">Zarejestruj się</span>
 			
 			<div class="dottedline"></div>
-            
+            <br><br>
 
-			<form method="POST" action="registered.php">
-				<label for="firstName">Imię:</label><br>
-				<input type="text" id="firstName" name="firstName" required><br>
-				<label for="lastName">Nazwisko:</label><br>
-				<input type="text" id="lastName" name="lastName" required><br>
-				<label for="city">Miasto:</label><br>
-				<input type="text" id="city" name="city" required><br>
-				<label for="address">Adres:</label><br>
-				<input type="text" id="address" name="address" required><br>
-				<label for="phone">Numer telefonu:</label><br>
-				<input type="tel" id="phone" name="phone" required><br>
-				<label for="email">Adres E-mail:</label><br>
-				<input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
-				<label for="password">Hasło:</label><br>
-				<input type="password" id="password" name="password" onblur="validatePassword()" required><br>
-				<label for="confirm-password">Potwierdź hasło:</label><br>
-				<input type="password" id="confirm-password" name="confirm-password" onblur="validatePassword()" required><br>
-				<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
-				<input type="submit" value="Zarejestruj" name="submit">
-			</form>
+<?php
+if (isset($_POST['submit']))
+{
+    //Utworzenie połączenia z db
+	$sql = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
+
+    //Pobranie danych z formularza
+	$firstname = $_POST["firstName"];
+	$lastname = $_POST["lastName"];
+	$city = $_POST["city"];
+	$address = $_POST["address"];
+	$phone = $_POST["phone"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+
+    //Szyfrowanie hasła
+    $options = [
+        'cost' => 12, // liczba rund, domyślnie 10-12
+    ];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options);
+
+    //Sprawdzenie czy adres email jest już w bazie
+    $check = mysqli_query($sql, "SELECT * FROM users WHERE email = '$email'");
+    if (mysqli_num_rows($check) == 0)
+    {
+        //Wprowadzenie danych do bazy
+        $insert = "INSERT INTO `users`(`firstname`, `lastname`, `city`, `address`, `phone`, `email`, `password`) VALUES ('$firstname', '$lastname', '$city', '$address', '$phone', '$email', '$hashed_password')";
+        if (mysqli_query($sql, $insert));
+        {
+            echo("<h2 style='text-align: center;'>Zarejestrowano pomyślnie</h2>");
+        }
+    }
+    else
+    {
+        //Komunikat o tym że istnieje już konto o podanym adresie email
+        echo("<h2 style='text-align: center;'>Podany adres email jest zajęty</h2>");
+    }
+    
+    //Zamkniecie połączenia z db
+    mysqli_close($sql);
+}
+?>
     </div>
 		
 		<div id="footer">

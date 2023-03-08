@@ -76,7 +76,7 @@
 			
 			<div class="dottedline"></div>
 			
-			<table>
+			<table id="partners">
 			<?php
 					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 

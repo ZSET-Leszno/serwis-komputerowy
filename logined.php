@@ -138,13 +138,38 @@ if (isset($_POST['submit']))
     {
         echo
         ('<form method="POST" action="logined.php">
-            <label for="email">Adres E-mail:</label><br>
-            <input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
-            <label for="password">Hasło:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" value="Zaloguj się" name="submit">
-        </form>
-        <br><b>Wprowadzono niepoprawne dane</b>'
+		<table id="logintable">
+			<tr>
+				<td>
+					<label for="email">Adres E-mail:</label>
+				</td>
+
+				<td>
+					<input type="email" id="email" name="email" onblur="validateEmail()" required>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="password">Hasło:</label>
+				</td>
+
+				<td>
+					<input type="password" id="password" name="password" onblur="validatePassword()" required>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="submit" value="Zaloguj się" name="submit" style="padding: 5px 10px;">
+				</td>
+
+				<td>
+					<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;">Dane logowania są niepoprawne</p>
+				</td>
+			</tr>
+		</table>
+	</form>'
         );
     }
     

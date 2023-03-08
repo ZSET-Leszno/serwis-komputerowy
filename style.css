@@ -216,3 +216,8 @@ th:first-child,td:first-child
 {
 	width: 100px;
 }
+
+#logintable tr:last-child
+{
+	height: 60px;
+}

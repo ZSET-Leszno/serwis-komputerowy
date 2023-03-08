@@ -77,7 +77,7 @@
 				</div>
 			</a>
 
-			<a href="partnerzy.html">
+			<a href="partnerzy.php">
 				<div class="optionL">
 					Partnerzy
 				</div>
@@ -91,12 +91,49 @@
         
 
 			<form method="POST" action="logined.php">
+<<<<<<< HEAD
 				<label for="email">Adres E-mail:</label><br>
 				<input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
 				<label for="password">Hasło:</label><br>
 				<input type="password" id="password" name="password" required><br><br>
 				<input type="submit" value="Zaloguj się" name="submit">
+=======
+				<table id="logintable">
+					<tr>
+						<td>
+							<label for="email">Adres E-mail:</label>
+						</td>
+
+						<td>
+							<input type="email" id="email" name="email" onblur="validateEmail()" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="password">Hasło:</label>
+						</td>
+
+						<td>
+							<input type="password" id="password" name="password" onblur="validatePassword()" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="submit" value="Zaloguj się" name="submit" style="padding: 5px 10px;">
+						</td>
+
+						<td>
+							<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
+							<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
+						</td>
+					</tr>
+				</table>
+>>>>>>> main
 			</form>
+
+
     </div>
 		
 		<div id="footer">

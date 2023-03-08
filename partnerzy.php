@@ -45,7 +45,7 @@
 			<div style="clear:both;"></div>
 		</div>
 		
-		<div id="sidebar">
+		<div id="sidebar" style="height: 380px;">
 			<a href="index.html">
 				<div class="optionL">
 					Strona główna
@@ -71,12 +71,12 @@
 			</a>
 		</div>
 		
-		<div id="content">
+		<div id="content" style="height: 380px;">
 			<span class="bigtitle">Nasi partnerzy</span>
 			
 			<div class="dottedline"></div>
 			
-			<table>
+			<table id="partners">
 			<?php
 					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
@@ -90,16 +90,13 @@
 
 					while ($row = mysqli_fetch_row($result))
 					{
-						echo """;<a href='". $row[0] ."'>";
 						echo "<tr>";
 
 						
-						echo "<td width='100px'><b>". $row[1] ."</b></td>";
+						echo "<td class='partnerlink' width='100px'><b> <a href='$row[0]' target='_blank'>$row[1]</a> </b></td>";
 						echo "<td>". $row[2] ."</td>";
-						
 
 						echo "</tr>";
-						echo "</a>";
 					}
 
 					mysqli_close($link);

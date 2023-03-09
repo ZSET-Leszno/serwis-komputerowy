@@ -10,14 +10,18 @@
 
 
 	<script>
-		function validateEmail() {
+		function validateEmail()
+		{
 			let email = document.getElementById("email").value;
 			let emailError = document.getElementById("email-error");
 
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
+			{
 				emailError.innerHTML = "Adres email jest niepoprawny";
 				return false;
-			} else {
+			}
+			else
+			{
 				emailError.innerHTML = "";
 				return true;
 			}
@@ -88,7 +92,7 @@
 			<div class="dottedline"></div>
         
 
-			<form method="POST" action="logined.php">
+			<form method="POST" action="logged.php">
 				<table id="logintable">
 					<tr>
 						<td>

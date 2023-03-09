@@ -3,50 +3,10 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PCExpress</title>
-	<meta name="description" content="Serwis poświęcony systemowi Linux. Naucz się wszystkiego, co chcesz wiedzieć o Linuxie!" />
-	<meta name="keywords" content="linux, kurs, nauka, poznaj, co to jest linux, ubuntu, debian, mint, fedora, wybierz dystrybucję, instalacja linux, polecenia, terminal, bash" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-
-
-	<script>
-		function validatePassword()
-		{
-			let password = document.getElementById("password").value;
-			let confirmPassword = document.getElementById("confirm-password").value;
-			let passwordError = document.getElementById("password-error");
-
-			if (password !== confirmPassword)
-			{
-				passwordError.innerHTML = "Hasła nie są identyczne";
-				return false;
-			}
-			else
-			{
-				passwordError.innerHTML = "";
-				return true;
-			}
-		}
-
-		function validateEmail()
-		{
-			let email = document.getElementById("email").value;
-			let emailError = document.getElementById("email-error");
-
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
-			{
-				emailError.innerHTML = "Adres email jest niepoprawny";
-				return false;
-			}
-			else
-			{
-				emailError.innerHTML = "";
-				return true;
-			}
-		}
-	</script>
 </head>
 
 <body>
@@ -99,7 +59,7 @@
 				</div>
 			</a>
 
-			<a href="partnerzy.html">
+			<a href="partnerzy.php">
 				<div class="optionL">
 					Partnerzy
 				</div>
@@ -133,7 +93,8 @@ if (isset($_POST['submit']))
 	$password = $_POST["password"];
 
     //Szyfrowanie hasła
-    $hashed_password = md5($password);
+    // $hashed_password = md5($password);
+	$hashed_password = $password;
 
     //Sprawdzenie czy adres email jest już w bazie
     $check = mysqli_query($sql, "SELECT * FROM users WHERE email = '$email'");

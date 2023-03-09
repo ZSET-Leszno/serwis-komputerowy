@@ -12,28 +12,36 @@
 
 
 	<script>
-		function validatePassword() {
+		function validatePassword()
+		{
 			let password = document.getElementById("password").value;
 			let confirmPassword = document.getElementById("confirm-password").value;
 			let passwordError = document.getElementById("password-error");
 
-			if (password !== confirmPassword) {
+			if (password !== confirmPassword)
+			{
 				passwordError.innerHTML = "Hasła nie są identyczne";
 				return false;
-			} else {
+			}
+			else
+			{
 				passwordError.innerHTML = "";
 				return true;
 			}
 		}
 
-		function validateEmail() {
+		function validateEmail()
+		{
 			let email = document.getElementById("email").value;
 			let emailError = document.getElementById("email-error");
 
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
+			{
 				emailError.innerHTML = "Adres email jest niepoprawny";
 				return false;
-			} else {
+			}
+			else
+			{
 				emailError.innerHTML = "";
 				return true;
 			}

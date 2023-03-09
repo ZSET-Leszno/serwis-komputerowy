@@ -221,3 +221,18 @@ th:first-child,td:first-child
 {
 	height: 60px;
 }
+
+#registertable td:first-child
+{
+	width: 150px;
+}
+
+#registertable tr:last-child
+{
+	height: 104px;
+}
+
+#registertable tr:last-child>td:last-child
+{
+	padding-top: 20px;
+}

@@ -3,8 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PCExpress</title>
-	<meta name="description" content="Serwis poświęcony systemowi Linux. Naucz się wszystkiego, co chcesz wiedzieć o Linuxie!" />
-	<meta name="keywords" content="linux, kurs, nauka, poznaj, co to jest linux, ubuntu, debian, mint, fedora, wybierz dystrybucję, instalacja linux, polecenia, terminal, bash" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -12,28 +10,36 @@
 
 
 	<script>
-		function validatePassword() {
+		function validatePassword()
+		{
 			let password = document.getElementById("password").value;
 			let confirmPassword = document.getElementById("confirm-password").value;
 			let passwordError = document.getElementById("password-error");
 
-			if (password !== confirmPassword) {
+			if (password !== confirmPassword)
+			{
 				passwordError.innerHTML = "Hasła nie są identyczne";
 				return false;
-			} else {
+			}
+			else
+			{
 				passwordError.innerHTML = "";
 				return true;
 			}
 		}
 
-		function validateEmail() {
+		function validateEmail()
+		{
 			let email = document.getElementById("email").value;
 			let emailError = document.getElementById("email-error");
 
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
+			{
 				emailError.innerHTML = "Adres email jest niepoprawny";
 				return false;
-			} else {
+			}
+			else
+			{
 				emailError.innerHTML = "";
 				return true;
 			}
@@ -42,7 +48,6 @@
 </head>
 
 <body>
-	
 	<div id="container">
 	
 		<div id="logo">
@@ -104,25 +109,100 @@
 			<div class="dottedline"></div>
             
 
-			<form method="POST" action="registered.php">
-				<label for="firstName">Imię:</label><br>
-				<input type="text" id="firstName" name="firstName" required><br>
-				<label for="lastName">Nazwisko:</label><br>
-				<input type="text" id="lastName" name="lastName" required><br>
-				<label for="city">Miasto:</label><br>
-				<input type="text" id="city" name="city" required><br>
-				<label for="address">Adres:</label><br>
-				<input type="text" id="address" name="address" required><br>
-				<label for="phone">Numer telefonu:</label><br>
-				<input type="tel" id="phone" name="phone" required><br>
-				<label for="email">Adres E-mail:</label><br>
-				<input type="email" id="email" name="email" onblur="validateEmail()" required><p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
-				<label for="password">Hasło:</label><br>
-				<input type="password" id="password" name="password" onblur="validatePassword()" required><br>
-				<label for="confirm-password">Potwierdź hasło:</label><br>
-				<input type="password" id="confirm-password" name="confirm-password" onblur="validatePassword()" required><br>
-				<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
-				<input type="submit" value="Zarejestruj" name="submit">
+			<form method="POST" action="registration.php">
+				<table id="registertable">
+					<tr>
+						<td>
+							<label for="firstName">Imię:</label><br>
+						</td>
+
+						<td>
+							<input type="text" id="firstName" name="firstName" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="lastName">Nazwisko:</label><br>
+						</td>
+
+						<td>
+							<input type="text" id="lastName" name="lastName" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="city">Miasto:</label><br>
+						</td>
+
+						<td>
+							<input type="text" id="city" name="city" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="address">Adres:</label><br>
+						</td>
+
+						<td>
+							<input type="text" id="address" name="address" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="phone">Numer telefonu:</label><br>
+						</td>
+
+						<td>
+							<input type="tel" id="phone" name="phone" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="email">Adres E-mail:</label><br>
+						</td>
+
+						<td>
+						<input type="email" id="email" name="email" onblur="validateEmail()" required>
+						
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="password">Hasło:</label><br>
+						</td>
+
+						<td>
+							<input type="password" id="password" name="password" onblur="validatePassword()" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="confirm-password">Potwierdź hasło:</label><br>
+						</td>
+
+						<td>
+							<input type="password" id="confirm-password" name="confirm-password" onblur="validatePassword()" required><br>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="submit" style="padding: 5px 10px; margin: 0px;" value="Zarejestruj" name="submit">
+						</td>
+
+						<td>
+							<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
+							<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
+						</td>
+					</tr>
+				</table>
 			</form>
     </div>
 		

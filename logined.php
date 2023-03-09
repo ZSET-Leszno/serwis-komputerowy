@@ -3,8 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PCExpress</title>
-	<meta name="description" content="Serwis poświęcony systemowi Linux. Naucz się wszystkiego, co chcesz wiedzieć o Linuxie!" />
-	<meta name="keywords" content="linux, kurs, nauka, poznaj, co to jest linux, ubuntu, debian, mint, fedora, wybierz dystrybucję, instalacja linux, polecenia, terminal, bash" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -122,7 +120,8 @@ if (isset($_POST['submit']))
 
     //Szyfrowanie hasła
 
-    $hashed_password = md5($password);
+    // $hashed_password = md5($password);
+	$hashed_password = $password;
 
     //Sprawdzenie wprowadzonych danych
     $login = "SELECT * FROM `users` WHERE email = '$email' AND password = '$hashed_password;";

@@ -3,8 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PCExpress</title>
-	<meta name="description" content="Serwis poświęcony systemowi Linux. Naucz się wszystkiego, co chcesz wiedzieć o Linuxie!" />
-	<meta name="keywords" content="linux, kurs, nauka, poznaj, co to jest linux, ubuntu, debian, mint, fedora, wybierz dystrybucję, instalacja linux, polecenia, terminal, bash" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	

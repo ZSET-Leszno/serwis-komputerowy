@@ -109,7 +109,30 @@
 
 
 			<?php
+				if (isset($_POST['submit']))
+				{
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
+					if(!$link)
+					{
+						die("Błąd połączenia z bazą danych \n".mysqli_error($link));
+					}
 				
+					$email = $_POST["email"];
+					$password = $_POST["password"];
+					
+					$query = "SELECT email, password password FROM users WHERE email = '". $email ."'";
+					$result = mysqli_query($link, $query);
+					$tab = mysqli_fetch_assoc($result);
+	
+					if ($password == $tab['password'])
+					{
+						echo "Zalogowano";
+					}
+					
+					//TODO wyszukiwanie adresu email (sprawdzanie, czy mysqli_query() wykonuje się prawidłowo)
+					//TODO walidacja danych przy rejestracji. Silne hasło (a nie np. same spacje), nr. tel nie może być tekstem
+					mysqli_close($link);
+				}
 			?>
 
 

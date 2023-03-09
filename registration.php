@@ -76,12 +76,8 @@
 if (isset($_POST['submit']))
 {
     //Utworzenie połączenia z db
-	$sql = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
-	if(!$sql)
-    {
-		//Wyświetlenie błedu w wypadku braku połączenia
-        die("Błąd połączenia z bazą danych: ".mysqli_error($sql));
-    }
+	$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
+	
 
     //Pobranie danych z formularza
 	$firstname = $_POST["firstName"];
@@ -97,12 +93,12 @@ if (isset($_POST['submit']))
 	$hashed_password = $password;
 
     //Sprawdzenie czy adres email jest już w bazie
-    $check = mysqli_query($sql, "SELECT * FROM users WHERE email = '$email'");
+    $check = mysqli_query($link, "SELECT * FROM users WHERE email = '$email'");
     if (mysqli_num_rows($check) == 0)
     {
         //Wprowadzenie danych do bazy
         $insert = "INSERT INTO `users`(`firstname`, `lastname`, `city`, `address`, `phone`, `email`, `password`) VALUES ('$firstname', '$lastname', '$city', '$address', '$phone', '$email', '$hashed_password')";
-        if (mysqli_query($sql, $insert));
+        if (mysqli_query($link, $insert));
         {
             echo("<h2 style='text-align: center;'>Zarejestrowano pomyślnie</h2>");
         }
@@ -114,7 +110,7 @@ if (isset($_POST['submit']))
     }
     
     //Zamkniecie połączenia z db
-    mysqli_close($sql);
+    mysqli_close($link);
 }
 ?>
     </div>

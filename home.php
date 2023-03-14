@@ -8,6 +8,16 @@
     </head>
 
     <body>
-        Jesteś zalogowany na stronie HOME PCExpress!
+        <?php
+            session_start();
+
+            if (!isset($_SESSION['email']))
+            {
+                header('Location: login.php');
+                exit();
+
+                echo "Użytkownik". $_SESSION['email'];
+            }
+        ?>
     </body>
 </html>

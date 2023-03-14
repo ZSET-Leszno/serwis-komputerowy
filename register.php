@@ -10,6 +10,7 @@
 
 
 <script>
+
 function validateEmail() {
   const emailInput = document.getElementById("email");
   const emailError = document.getElementById("email-error");
@@ -17,8 +18,13 @@ function validateEmail() {
 
   if (!emailInput.value.match(emailRegex)) {
     emailError.textContent = "Nieprawidłowy adres e-mail";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
+	return false;
   } else {
     emailError.textContent = "";
+	const submitButton = document.getElementById("submit");
+	submitButton.disabled = false;
   }
 }
 
@@ -34,43 +40,56 @@ function validatePassword() {
   // Check if password is at least 8 characters long
   if (password.length < 8) {
     passwordError.innerText = "Hasło musi mieć co najmniej 8 znaków";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 
   // Check if password contains at least one uppercase letter
   if (!/[A-Z]/.test(password)) {
     passwordError.innerText = "Hasło musi zawierać co najmniej jedną wielką literę";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 
   // Check if password contains at least one lowercase letter
   if (!/[a-z]/.test(password)) {
     passwordError.innerText = "Hasło musi zawierać co najmniej jedną małą literę";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 
   // Check if password contains at least one number
   if (!/[0-9]/.test(password)) {
     passwordError.innerText = "Hasło musi zawierać co najmniej jedną cyfrę";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 
   // Check if password contains at least one special character
   if (!/[@#$%^&+=]/.test(password)) {
     passwordError.innerText = "Hasło musi zawierać co najmniej jeden znak specjalny (@#$%^&+=)";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 // Check if passwords match
   if (password !== confirmPassword) {
     passwordError.innerText = "Hasła nie są identyczne";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
     return false;
   }
 
   // If all checks pass, clear error message and return true
   passwordError.innerText = "";
+  const submitButton = document.getElementById("submit");
+  submitButton.disabled = false;
   return true;
 }
-
 
 function validatePhone() {
   const phoneInput = document.getElementById("phone");
@@ -79,24 +98,22 @@ function validatePhone() {
 
   if (!phoneInput.value.match(phoneRegex)) {
     phoneError.textContent = "Nieprawidłowy numer telefonu";
+	const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
+	return false;
+
   } else {
     phoneError.textContent = "";
+	const submitButton = document.getElementById("submit");
+	submitButton.disabled = false;
   }
 }
 
-const form = document.querySelector("form");
 
-form.addEventListener("submit", (event) => {
-  validateEmail();
-  validatePassword();
-  validatePhone();
 
-  const errors = document.querySelectorAll(".error");
-
-  if (errors.length > 0) {
-    event.preventDefault();
-  }
-});
+validateEmail();
+validatePassword();
+validatePhone();
 </script>
 </head>
 
@@ -162,98 +179,98 @@ form.addEventListener("submit", (event) => {
 			<div class="dottedline"></div>
             
 
-			<form method="POST" action="registration.php">
+			<form method="POST" action="registration.php" id="register">
 				<table id="registertable">
 					<tr>
 						<td>
-							<label for="firstName">Imię:</label><br>
+							<label for="firstName">Imię:</label>
 						</td>
 
 						<td>
-							<input type="text" id="firstName" name="firstName" required><br>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<label for="lastName">Nazwisko:</label><br>
-						</td>
-
-						<td>
-							<input type="text" id="lastName" name="lastName" required><br>
+							<input type="text" id="firstName" name="firstName" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<label for="city">Miasto:</label><br>
+							<label for="lastName">Nazwisko:</label>
 						</td>
 
 						<td>
-							<input type="text" id="city" name="city" required><br>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<label for="address">Adres:</label><br>
-						</td>
-
-						<td>
-							<input type="text" id="address" name="address" required><br>
+							<input type="text" id="lastName" name="lastName" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<label for="phone">Numer telefonu:</label><br>
+							<label for="city">Miasto:</label>
 						</td>
 
 						<td>
-							<input type="tel" id="phone" name="phone" onblur="validatePhone()" required><br>
+							<input type="text" id="city" name="city" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<label for="email">Adres E-mail:</label><br>
+							<label for="address">Adres:</label>
+						</td>
+
+						<td>
+							<input type="text" id="address" name="address" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="phone">Numer telefonu:</label>
+						</td>
+
+						<td>
+							<input type="tel" id="phone" name="phone" onblur="validatePhone()" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="email">Adres E-mail:</label>
 						</td>
 
 						<td>
 						<input type="email" id="email" name="email" onblur="validateEmail()" required>
-						
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<label for="password">Hasło:</label><br>
+							<label for="password">Hasło:</label>
 						</td>
 
 						<td>
-							<input type="password" id="password" name="password" onblur="validatePassword()" required><br>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<label for="confirm-password">Potwierdź hasło:</label><br>
-						</td>
-
-						<td>
-							<input type="password" id="confirm-password" name="confirm-password" onblur="validatePassword()" required><br>
+							<input type="password" id="password" name="password" onblur="validatePassword()" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<input type="submit" style="padding: 5px 10px; margin: 0px;" value="Zarejestruj" name="submit">
+							<label for="confirm-password">Potwierdź hasło:</label>
 						</td>
 
 						<td>
-							<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
-							<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
-							<p id="phone-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
+							<input type="password" id="confirm-password" name="confirm-password" onblur="validatePassword()" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<br><input type="submit" id="submit" style="padding: 5px 10px; margin: 0px;" value="Zarejestruj" name="submit">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="phone-error" style="color: crimson; font-weight: 600; font-size: 14px;"></p>
+							<p id="email-error" style="color: crimson; font-weight: 600; font-size: 14px;"></p>
+							<p id="password-error" style="color: crimson; font-weight: 600; font-size: 14px;"></p>
 						</td>
 					</tr>
 				</table>

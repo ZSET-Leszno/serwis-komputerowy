@@ -92,7 +92,7 @@
 			<div class="dottedline"></div>
         
 
-			<form method="POST" action="logged.php">
+			<form method="POST" action="login.php">
 				<table id="logintable">
 					<tr>
 						<td>
@@ -125,7 +125,49 @@
 					</tr>
 				</table>
 			</form>
+			<?php
+				if (isset($_POST['submit']))
+				{
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", 'zset_wojcik');
+					if(!$link)
+					{
+						die("Błąd połączenia z bazą danych \n". mysqli_error($link));
+					}
+				
+					$email = $_POST["email"];
+					$password = $_POST["password"];
+					$hashed_password = md5($password);
+					
+					$query = "SELECT email, password FROM users WHERE email = '". $email ."'";
+					$result = mysqli_query($link, $query);
+					$resultTab = mysqli_fetch_assoc($result);
 
+					if (!$result || empty($resultTab['email']))
+					{
+						die("Nie znaleziono adresu email \n". mysqli_error($conn));
+					}
+
+					
+					if ($hashed_password == $resultTab['password'])
+					{
+						session_start();
+
+						$_SESSION['email'] = $email;
+
+						header('Location: home.php');
+
+						exit();
+					}
+					else
+					{
+						echo "Wprowadzono niepoprawne hasło<br>";
+						echo $hashed_password."<br>";
+						echo $resultTab['password'];
+					}
+					
+					mysqli_close($link);
+				}
+			?>
 
     </div>
 		

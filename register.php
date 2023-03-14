@@ -263,9 +263,11 @@ validatePhone();
 
 					<tr>
 						<td>
-							<br><input type="submit" id="submit" style="padding: 5px 10px; margin: 0px;" value="Zarejestruj" name="submit">
+							<input type="submit" id="submit" style="padding: 5px 10px; margin: 0px;" value="Zarejestruj" name="submit">
 						</td>
 					</tr>
+				</table>
+				<table>
 					<tr>
 						<td>
 							<p id="phone-error" style="color: crimson; font-weight: 600; font-size: 14px;"></p>

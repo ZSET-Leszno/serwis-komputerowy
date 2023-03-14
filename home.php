@@ -8,6 +8,20 @@
     </head>
 
     <body>
-        Jesteś zalogowany na stronie HOME PCExpress!
+        <?php
+            session_start();
+
+            if (!isset($_SESSION['email']))
+            {
+                header('Location: login.php');
+                exit();
+            }
+
+            echo "Zalogowano";
+        ?>
+
+        <form action="logout.php" method="post">
+            <button type="submit" name="logout">Wyloguj</button>
+        </form>
     </body>
 </html>

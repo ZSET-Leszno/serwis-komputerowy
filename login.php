@@ -125,6 +125,7 @@
 					</tr>
 				</table>
 			</form>
+			
 			<?php
 				if (isset($_POST['submit']))
 				{

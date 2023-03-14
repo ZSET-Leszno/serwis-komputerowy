@@ -119,8 +119,9 @@
 				
 					$email = $_POST["email"];
 					$password = $_POST["password"];
+					$hashed_password = md5($password);
 					
-					$query = "SELECT email, password password FROM users WHERE email = '". $email ."'";
+					$query = "SELECT email, password FROM users WHERE email = '". $email ."'";
 					$result = mysqli_query($link, $query);
 					$resultTab = mysqli_fetch_assoc($result);
 
@@ -130,13 +131,15 @@
 					}
 
 					
-					if ($password == $resultTab['password'])
+					if ($hashed_password == $resultTab['password'])
 					{
 						echo "Zalogowano";
 					}
 					else
 					{
-						echo "Wprowadzono niepoprawne hasło";
+						echo "Wprowadzono niepoprawne hasło<br>";
+						echo $hashed_password."<br>";
+						echo $resultTab['password'];
 					}
 					
 					mysqli_close($link);

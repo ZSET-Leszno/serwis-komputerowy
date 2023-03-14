@@ -15,9 +15,13 @@
             {
                 header('Location: login.php');
                 exit();
-
-                echo "Użytkownik". $_SESSION['email'];
             }
+
+            echo "Zalogowano";
         ?>
+
+        <form action="logout.php" method="post">
+            <button type="submit" name="logout">Wyloguj</button>
+        </form>
     </body>
 </html>

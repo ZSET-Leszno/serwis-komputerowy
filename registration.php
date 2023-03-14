@@ -105,7 +105,7 @@ if (isset($_POST['submit']))
     else
     {
         //Komunikat o tym że istnieje już konto o podanym adresie email
-        echo("<h2 style='text-align: center;'>Podany adres email jest zajęty</h2>");
+        echo("<h2 style='text-align: center;'>Podany adres email jest już zajęty</h2>");
     }
     
     //Zamkniecie połączenia z db

@@ -9,42 +9,95 @@
 
 
 
-	<script>
-		function validatePassword()
-		{
-			let password = document.getElementById("password").value;
-			let confirmPassword = document.getElementById("confirm-password").value;
-			let passwordError = document.getElementById("password-error");
+<script>
+function validateEmail() {
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("email-error");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-			if (password !== confirmPassword)
-			{
-				passwordError.innerHTML = "Hasła nie są identyczne";
-				return false;
-			}
-			else
-			{
-				passwordError.innerHTML = "";
-				return true;
-			}
-		}
+  if (!emailInput.value.match(emailRegex)) {
+    emailError.textContent = "Nieprawidłowy adres e-mail";
+  } else {
+    emailError.textContent = "";
+  }
+}
 
-		function validateEmail()
-		{
-			let email = document.getElementById("email").value;
-			let emailError = document.getElementById("email-error");
+function validatePassword() {
+  const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const passwordError = document.getElementById("password-error");
 
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
-			{
-				emailError.innerHTML = "Adres email jest niepoprawny";
-				return false;
-			}
-			else
-			{
-				emailError.innerHTML = "";
-				return true;
-			}
-		}
-	</script>
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+
+
+  // Check if password is at least 8 characters long
+  if (password.length < 8) {
+    passwordError.innerText = "Hasło musi mieć co najmniej 8 znaków";
+    return false;
+  }
+
+  // Check if password contains at least one uppercase letter
+  if (!/[A-Z]/.test(password)) {
+    passwordError.innerText = "Hasło musi zawierać co najmniej jedną wielką literę";
+    return false;
+  }
+
+  // Check if password contains at least one lowercase letter
+  if (!/[a-z]/.test(password)) {
+    passwordError.innerText = "Hasło musi zawierać co najmniej jedną małą literę";
+    return false;
+  }
+
+  // Check if password contains at least one number
+  if (!/[0-9]/.test(password)) {
+    passwordError.innerText = "Hasło musi zawierać co najmniej jedną cyfrę";
+    return false;
+  }
+
+  // Check if password contains at least one special character
+  if (!/[@#$%^&+=]/.test(password)) {
+    passwordError.innerText = "Hasło musi zawierać co najmniej jeden znak specjalny (@#$%^&+=)";
+    return false;
+  }
+// Check if passwords match
+  if (password !== confirmPassword) {
+    passwordError.innerText = "Hasła nie są identyczne";
+    return false;
+  }
+
+  // If all checks pass, clear error message and return true
+  passwordError.innerText = "";
+  return true;
+}
+
+
+function validatePhone() {
+  const phoneInput = document.getElementById("phone");
+  const phoneError = document.getElementById("phone-error");
+  const phoneRegex = /^\d{9}$/;
+
+  if (!phoneInput.value.match(phoneRegex)) {
+    phoneError.textContent = "Nieprawidłowy numer telefonu";
+  } else {
+    phoneError.textContent = "";
+  }
+}
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+  validateEmail();
+  validatePassword();
+  validatePhone();
+
+  const errors = document.querySelectorAll(".error");
+
+  if (errors.length > 0) {
+    event.preventDefault();
+  }
+});
+</script>
 </head>
 
 <body>
@@ -157,7 +210,7 @@
 						</td>
 
 						<td>
-							<input type="tel" id="phone" name="phone" required><br>
+							<input type="tel" id="phone" name="phone" onblur="validatePhone()" required><br>
 						</td>
 					</tr>
 
@@ -200,6 +253,7 @@
 						<td>
 							<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
 							<p id="password-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
+							<p id="phone-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p><br>
 						</td>
 					</tr>
 				</table>

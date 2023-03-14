@@ -133,7 +133,13 @@
 					
 					if ($hashed_password == $resultTab['password'])
 					{
-						echo "Zalogowano";
+						session_start();
+
+						$_SESSION['email'] = $email;
+
+						header('Location: home.php');
+
+						exit();
 					}
 					else
 					{

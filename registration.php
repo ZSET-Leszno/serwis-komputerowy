@@ -89,7 +89,7 @@ if (isset($_POST['submit']))
 	$password = $_POST["password"];
 
     //Szyfrowanie hasła
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = md5($password);
 
     //Sprawdzenie czy adres email jest już w bazie
     $check = mysqli_query($link, "SELECT * FROM users WHERE email = '$email'");

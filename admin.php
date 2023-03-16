@@ -218,5 +218,11 @@
 		</div>
 	
 	</div>
+	<script>
+function submitForm()
+	{
+		document.getElementById("logoutform").submit();
+	}
+</script>
 </body>
 </html>

@@ -95,7 +95,7 @@
 				<input type="submit" name="kwerenda1" value="Użytkownicy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda2" value="Partnerzy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda3" value="Usługi" style="padding: 5px 10px;">
-
+				<br><br>
 				<?php
 					if(isset($_POST['kwerenda1']))
 					{

@@ -30,12 +30,28 @@
 		</div>
 		
 		<div id="menu">
-            <div class="option" id="username"></div>
+            <div id="username" style="float: left;">
+			<b>
+				<?php
 
-			<!-- <a href="register.php" target="_blank">
-				<div class="option">Wyloguj się</div>
-			</a> -->
+				session_start();
 
+				if (!isset($_SESSION['email']))
+				{
+					header('Location: login.php');
+					exit();
+				}
+
+				echo $_SESSION['email'];
+    			?>
+			</b>
+			</div>
+
+			<form id="logoutform" action="logout.php">
+				<div class="option" onclick="submitForm()">
+					Wyloguj
+				</div>
+			</form>
 			
 			<div style="clear:both;"></div>
 		</div>
@@ -63,7 +79,7 @@
 
 			</div>
 			
-			<div id="content" style="height: fit-content;">
+			<div id="content" style="min-height: 400px; height: fit-content;">
 				<span class="bigtitle">Kwerendy</span>
 				
 				<div class="dottedline"></div>

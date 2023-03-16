@@ -48,14 +48,14 @@
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="sidebar" style="height: 380px;">
 			<a href="home.php">
 				<div class="optionL">
-					<b>Jak to działa?</b>
+					Jak to działa?
 				</div>
 			</a>
 
-			<a href="order.php">
+            <a href="order.php">
 				<div class="optionL">
 					Zamawianie
 				</div>
@@ -69,7 +69,7 @@
 
             <a href="partnerzy-home.php">
 				<div class="optionL">
-					Partnerzy
+					<b>Partnerzy</b>
 				</div>
 			</a>
 
@@ -86,60 +86,37 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
-			<span class="bigtitle">Jak to działa?</span>
+		<div id="content" style="height: 380px;">
+			<span class="bigtitle">Nasi partnerzy</span>
 			
 			<div class="dottedline"></div>
 			
-            Możesz odwiedzić nasz serwis komputerowy i wykonać zamówienie fizycznie.
-            Musisz podać pracownikowi tworzącemu zamówienie swój adres e-mail, powiązany z kontem.
-            
-            <h3>LUB</h3>
+            <table id="partners">
+			<?php
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
 
-            Kup wykonanie usługi bezpośrednio przez stronę internetową!
+					if (!$link)
+					{
+						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+					}
 
-            <br>
+					
+					$result = mysqli_query($link, "SELECT link, name, description FROM partners;");
 
-            Możesz wtedy osobiście dowieźć sprzęt do naszegu serwisu lub wybrać <b>opcję z dostawą!</b>
+					while ($row = mysqli_fetch_row($result))
+					{
+						echo "<tr>";
 
-            <br><br><br>
-            <center>
-                <table>
-                    <tr>
-                        <th>
-                            Wspierane dostawy
-                        </th>
-                    </tr>
-                        
-                    <tr>
-                        <table>
-                        <tr>
-                        <td>
-                            Kurier DPD
-                        </td>
+						
+						echo "<td class='partnerlink' width='100px'><b> <a href='$row[0]' target='_blank'>$row[1]</a> </b></td>";
+						echo "<td>". $row[2] ."</td>";
 
-                        <td>
-                            Kurier podjeżdża pod twój dom i odbiera paczkę.
-                            <br>
-                            Po wykonaniu usługi serwisowej przwywozi paczkę pod twój dom.
-                        </td>
-                    </tr>
+						echo "</tr>";
+					}
 
-                    <tr>
-                        <td>
-                            Paczkomat InPost
-                        </td>
-
-                        <td>
-                            Nadajesz paczkę na wskazany adres.
-                            <br>
-                            Po wykonaniu usługi serwisowej odbierasz swój sprzęt w tym samym miejscu.
-                        </td>
-                    </tr>
-                        </table>
-                    </tr>
-                </table>
-            </center>
+					mysqli_close($link);
+				?>
+			</table>
 		</div>	
 		
 		<div id="footer">

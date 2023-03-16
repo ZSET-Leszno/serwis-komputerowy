@@ -48,10 +48,10 @@
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="sidebar">
 			<a href="home.php">
 				<div class="optionL">
-					<b>Jak to działa?</b>
+					Jak to działa?
 				</div>
 			</a>
 
@@ -81,65 +81,34 @@
 
 			<a href="pomoc.php">
 				<div class="optionL">
-					Pomoc
+					<b>Pomoc</b>
 				</div>
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
-			<span class="bigtitle">Jak to działa?</span>
+		<div id="content">
+			<span class="bigtitle">Pomoc</span>
 			
 			<div class="dottedline"></div>
 			
-            Możesz odwiedzić nasz serwis komputerowy i wykonać zamówienie fizycznie.
-            Musisz podać pracownikowi tworzącemu zamówienie swój adres e-mail, powiązany z kontem.
-            
-            <h3>LUB</h3>
+			<h3>Napotkałeś problem z naszymi usługami?</h3>
+			<h3>Usługa nie została wykonana prawidłowo?</h3>
+			<h3>Usługa nie została wykonana na czas?</h3>
+			<h3>Sprzęt nie dotarł na czas?</h3>
 
-            Kup wykonanie usługi bezpośrednio przez stronę internetową!
+			<br>
 
-            <br>
+			<h2>Napisz do nas!</h2>
+            Możesz napisać na nasz mail <a href="mailto:info@pcexpress.com">info@pcexpress.com</a>, lub skontaktować się z nami przez poniższy formularz kontaktowy.
 
-            Możesz wtedy osobiście dowieźć sprzęt do naszegu serwisu lub wybrać <b>opcję z dostawą!</b>
+			<br><br><br>
 
-            <br><br><br>
-            <center>
-                <table>
-                    <tr>
-                        <th>
-                            Wspierane dostawy
-                        </th>
-                    </tr>
-                        
-                    <tr>
-                        <table>
-                        <tr>
-                        <td>
-                            Kurier DPD
-                        </td>
+			<form action="mailto:info@pcexpress.com" method="post" enctype="text/plain">
 
-                        <td>
-                            Kurier podjeżdża pod twój dom i odbiera paczkę.
-                            <br>
-                            Po wykonaniu usługi serwisowej przwywozi paczkę pod twój dom.
-                        </td>
-                    </tr>
+			<textarea cols="100" rows="30" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość"></textarea>	
 
-                    <tr>
-                        <td>
-                            Paczkomat InPost
-                        </td>
 
-                        <td>
-                            Nadajesz paczkę na wskazany adres.
-                            <br>
-                            Po wykonaniu usługi serwisowej odbierasz swój sprzęt w tym samym miejscu.
-                        </td>
-                    </tr>
-                        </table>
-                    </tr>
-                </table>
-            </center>
+			</form>
 		</div>	
 		
 		<div id="footer">
@@ -167,7 +136,7 @@
 
 			<br>
 
-			E-mail: <a href="mailto:info@pcexpress.com">info@pcexpress.com.</a>
+			E-mail: <a href="mailto:info@pcexpress.com">info@pcexpress.com</a>
 
  
 		</div>

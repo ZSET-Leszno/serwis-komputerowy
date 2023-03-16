@@ -7,26 +7,6 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-
-
-	<script>
-		function validateEmail()
-		{
-			let email = document.getElementById("email").value;
-			let emailError = document.getElementById("email-error");
-
-			if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
-			{
-				emailError.innerHTML = "Adres email jest niepoprawny";
-				return false;
-			}
-			else
-			{
-				emailError.innerHTML = "";
-				return true;
-			}
-		}
-	</script>
 </head>
 
 <body>
@@ -100,7 +80,7 @@
 						</td>
 
 						<td>
-							<input type="email" id="email" name="email" onblur="validateEmail()" required>
+							<input type="email" id="email" name="email" required>
 						</td>
 					</tr>
 
@@ -110,17 +90,13 @@
 						</td>
 
 						<td>
-							<input type="password" id="password" name="password" onblur="validatePassword()" required>
+							<input type="password" id="password" name="password" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
 							<input type="submit" value="Zaloguj się" name="submit" style="padding: 5px 10px;">
-						</td>
-
-						<td>
-							<p id="email-error" style="all:inherit; color: crimson; font-weight: 600; font-size: 14px;"></p>
 						</td>
 					</tr>
 				</table>
@@ -139,7 +115,7 @@
 					$password = $_POST["password"];
 					$hashed_password = md5($password);
 					
-					$query = "SELECT email, password FROM users WHERE email = '". $email ."'";
+					$query = "SELECT email, password, privileges FROM users WHERE email = '". $email ."'";
 					$result = mysqli_query($link, $query);
 					$resultTab = mysqli_fetch_assoc($result);
 
@@ -155,15 +131,22 @@
 
 						$_SESSION['email'] = $email;
 
-						header('Location: home.php');
+						if ($resultTab['privileges'] != "admin")
+						{
+							header('Location: home.php');
 
-						exit();
+							exit();
+						}
+						else
+						{
+							header('Location: admin.php');
+	
+							exit();
+						}
 					}
 					else
 					{
-						echo "Wprowadzono niepoprawne hasło<br>";
-						echo $hashed_password."<br>";
-						echo $resultTab['password'];
+						echo "<table><tr><td>Wprowadzono niepoprawne hasło<br><td></tr></table>";
 					}
 					
 					mysqli_close($link);

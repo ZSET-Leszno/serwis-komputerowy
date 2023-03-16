@@ -30,12 +30,28 @@
 		</div>
 		
 		<div id="menu">
-            <div class="option" id="username"></div>
+            <div id="username" style="float: left;">
+			<b>
+				<?php
 
-			<!-- <a href="register.php" target="_blank">
-				<div class="option">Wyloguj się</div>
-			</a> -->
+				session_start();
 
+				if (!isset($_SESSION['email']))
+				{
+					header('Location: login.php');
+					exit();
+				}
+
+				echo $_SESSION['email'];
+    			?>
+			</b>
+			</div>
+
+			<form id="logoutform" action="logout.php">
+				<div class="option" onclick="submitForm()">
+					Wyloguj
+				</div>
+			</form>
 			
 			<div style="clear:both;"></div>
 		</div>
@@ -63,7 +79,7 @@
 
 			</div>
 			
-			<div id="content" style="height: fit-content;">
+			<div id="content" style="min-height: 400px; height: fit-content;">
 				<span class="bigtitle">Kwerendy</span>
 				
 				<div class="dottedline"></div>
@@ -79,7 +95,7 @@
 				<input type="submit" name="kwerenda1" value="Użytkownicy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda2" value="Partnerzy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda3" value="Usługi" style="padding: 5px 10px;">
-
+				<br><br>
 				<?php
 					if(isset($_POST['kwerenda1']))
 					{
@@ -202,5 +218,11 @@
 		</div>
 	
 	</div>
+	<script>
+function submitForm()
+	{
+		document.getElementById("logoutform").submit();
+	}
+</script>
 </body>
 </html>

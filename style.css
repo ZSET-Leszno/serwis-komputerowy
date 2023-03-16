@@ -248,3 +248,10 @@ th:first-child,td:first-child
 {
 	padding-top: 20px;
 }
+
+#help-textarea
+{
+	width: 99%;
+	height: 300px;
+	resize: none;
+}

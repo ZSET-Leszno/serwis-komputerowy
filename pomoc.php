@@ -105,8 +105,10 @@
 
 			<form action="mailto:info@pcexpress.com" method="post" enctype="text/plain">
 
-			<textarea cols="100" rows="30" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość"></textarea>	
+			<textarea id="help-textarea" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość (max 3000 znaków)"></textarea>	
 
+			
+			<button type="submit">Wyślij</button>
 
 			</form>
 		</div>	

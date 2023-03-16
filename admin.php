@@ -42,7 +42,7 @@
 		
 		<br>
 		<div id="subcontainer">
-			<div id="sidebar">
+			<div id="sidebar" style="height: inherit;">
 				<a href="admin.php">
 					<div class="optionL">
 						<b>Strona główna</b>
@@ -125,7 +125,6 @@
 						<tr>
 							<th>id</th> <th>Nazwa</th> <th>Opis</th> <th>Link</th>
 						</tr>");
-						for($i = 0; $i < mysqli_num_rows($result); $i++)
 						while ($row = mysqli_fetch_row($result))
 						{
 							echo "<tr>";

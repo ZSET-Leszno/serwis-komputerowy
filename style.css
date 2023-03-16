@@ -8,7 +8,7 @@ body
 {
 	width: 1000px;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: auto;	
 }
 
 #logo
@@ -236,4 +236,9 @@ th:first-child,td:first-child
 #registertable tr:last-child>td:last-child
 {
 	padding-top: 20px;
+}
+#subcontainer
+{
+	display: flex;
+	align-content: stretch;
 }

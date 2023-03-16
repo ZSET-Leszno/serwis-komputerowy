@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -47,14 +48,14 @@
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="sidebar" style="height: 830px;">
 			<a href="home.php">
 				<div class="optionL">
-					<b>Jak to działa?</b>
+					Jak to działa?
 				</div>
 			</a>
 
-			<a href="order.php">
+            <a href="order.php">
 				<div class="optionL">
 					Zamawianie
 				</div>
@@ -74,7 +75,7 @@
 
 			<a href="lokalizacja-home.php">
 				<div class="optionL">
-					Lokalizacja
+					<b>Lokalizacja</b>
 				</div>
 			</a>
 
@@ -85,61 +86,17 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
-			<span class="bigtitle">Jak to działa?</span>
+		<div id="content" style="height: 830px;">
+			<span class="bigtitle">Nasza lokalizacja</span>
 			
 			<div class="dottedline"></div>
 			
-            Możesz odwiedzić nasz serwis komputerowy i wykonać zamówienie fizycznie.
-            Musisz podać pracownikowi tworzącemu zamówienie swój adres e-mail, powiązany z kontem.
-            
-            <h3>LUB</h3>
-
-            Kup wykonanie usługi bezpośrednio przez stronę internetową!
-
+			<p>
+                Zapraszamy do naszego serwisu komputerowego mieszczącego się w Lesznie na ulicy Leszczyńskich 27. Nasza lokalizacja znajduje się w dogodnym miejscu, niedaleko centrum miasta, co ułatwia dotarcie do nas zarówno samochodem, jak i komunikacją miejską. Oferujemy szeroki zakres usług związanych z naprawą i konserwacją sprzętu komputerowego, w tym także sprzedaż części i akcesoriów. Jesteśmy do Państwa dyspozycji od poniedziałku do piątku w godzinach 8:00 - 15:00, zapraszamy!
+            </p>
             <br>
-
-            Możesz wtedy osobiście dowieźć sprzęt do naszegu serwisu lub wybrać <b>opcję z dostawą!</b>
-
-            <br><br><br>
-            <center>
-                <table>
-                    <tr>
-                        <th>
-                            Wspierane dostawy
-                        </th>
-                    </tr>
-                        
-                    <tr>
-                        <table>
-                        <tr>
-                        <td>
-                            Kurier DPD
-                        </td>
-
-                        <td>
-                            Kurier podjeżdża pod twój dom i odbiera paczkę.
-                            <br>
-                            Po wykonaniu usługi serwisowej przwywozi paczkę pod twój dom.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Paczkomat InPost
-                        </td>
-
-                        <td>
-                            Nadajesz paczkę na wskazany adres.
-                            <br>
-                            Po wykonaniu usługi serwisowej odbierasz swój sprzęt w tym samym miejscu.
-                        </td>
-                    </tr>
-                        </table>
-                    </tr>
-                </table>
-            </center>
-		</div>	
+            <iframe style="border: 5px solid #128870;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2465.0763525934326!2d16.572600551442523!3d51.841301293955524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4705983b277a0eeb%3A0xc38a0a509fc107bb!2sLeszczy%C5%84skich%2027%2C%2064-100%20Leszno!5e0!3m2!1spl!2spl!4v1677170484095!5m2!1spl!2spl" width="720" height="600" style="border: 0;;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
 		
 		<div id="footer">
 			© 2023 PCExpress Sp. z o.o. Wszelkie prawa zastrzeżone.

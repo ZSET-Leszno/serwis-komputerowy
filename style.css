@@ -93,6 +93,17 @@ body
 	line-height: 23px;
 }
 
+#username
+{
+	float: right;
+	min-width: 50px;
+	height: 25px;
+	font-size: 18px;
+	padding: 10px;
+	/* border-right: 2px dotted #444444; */
+	opacity: 0.8;
+}
+
 .option
 {
 	float: right;
@@ -237,8 +248,15 @@ th:first-child,td:first-child
 {
 	padding-top: 20px;
 }
+
 #subcontainer
 {
 	display: flex;
 	align-content: stretch;
+
+#help-textarea
+{
+	width: 99%;
+	height: 300px;
+	resize: none;
 }

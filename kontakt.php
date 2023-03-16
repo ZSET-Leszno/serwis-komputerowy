@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -50,19 +51,19 @@
 		<div id="sidebar" style="height: 430px;">
 			<a href="home.php">
 				<div class="optionL">
-					<b>Jak to działa?</b>
-				</div>
-			</a>
-
-			<a href="order.php">
-				<div class="optionL">
-					Zamawianie
+					Jak to działa?
 				</div>
 			</a>
 
 			<a href="status.php">
 				<div class="optionL">
 					Status
+				</div>
+			</a>
+
+            <a href="">
+				<div class="optionL">
+					<b>Kontakt</b>
 				</div>
 			</a>
 
@@ -77,68 +78,14 @@
 					Lokalizacja
 				</div>
 			</a>
-
-			<a href="pomoc.php">
-				<div class="optionL">
-					Pomoc
-				</div>
-			</a>
 		</div>
 		
 		<div id="content" style="height: 430px;">
-			<span class="bigtitle">Jak to działa?</span>
+			<span class="bigtitle">Status wykonania twoich usług</span>
 			
 			<div class="dottedline"></div>
 			
-            Możesz odwiedzić nasz serwis komputerowy i wykonać zamówienie fizycznie.
-            Musisz podać pracownikowi tworzącemu zamówienie swój adres e-mail, powiązany z kontem.
-            
-            <h3>LUB</h3>
-
-            Kup wykonanie usługi bezpośrednio przez stronę internetową!
-
-            <br>
-
-            Możesz wtedy osobiście dowieźć sprzęt do naszegu serwisu lub wybrać <b>opcję z dostawą!</b>
-
-            <br><br><br>
-            <center>
-                <table>
-                    <tr>
-                        <th>
-                            Wspierane dostawy
-                        </th>
-                    </tr>
-                        
-                    <tr>
-                        <table>
-                        <tr>
-                        <td>
-                            Kurier DPD
-                        </td>
-
-                        <td>
-                            Kurier podjeżdża pod twój dom i odbiera paczkę.
-                            <br>
-                            Po wykonaniu usługi serwisowej przwywozi paczkę pod twój dom.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Paczkomat InPost
-                        </td>
-
-                        <td>
-                            Nadajesz paczkę na wskazany adres.
-                            <br>
-                            Po wykonaniu usługi serwisowej odbierasz swój sprzęt w tym samym miejscu.
-                        </td>
-                    </tr>
-                        </table>
-                    </tr>
-                </table>
-            </center>
+            TODO: Zrobić!
 		</div>	
 		
 		<div id="footer">

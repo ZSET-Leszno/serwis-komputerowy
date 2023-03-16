@@ -93,7 +93,7 @@
 				?>
 				<form method="post" action="admin.php">
 				<input type="submit" name="kwerenda1" value="Użytkownicy" style="padding: 5px 10px;">
-				<input type="submit" name="kwerenda2" value="Partnerzy" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda2e" value="Partnerzy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda3" value="Usługi" style="padding: 5px 10px;">
 				<br><br>
 				<?php
@@ -154,7 +154,39 @@
 						echo("</table>");
 					}
 				?>
+				<?php
+					if(isset($_POST['kwerenda2e']))
+					{
+						$query = "SELECT * FROM partners;";
+						$result = mysqli_query($link, $query);
+						if (!$result)
+						{
+							echo("Błąd zapytania: ".mysqli_error($link));
+							exit();
+						}
+						echo("<table>
+						<tr>
+							<th>id</th>
+							<th>Nazwa</th>
+							<th>Opis</th>
+							<th>Link</th>
+							<th>Edytuj</th>
+						</tr>");
+						while ($row = mysqli_fetch_assoc($result))
+						{
+							echo "<tr>";
 
+							foreach($row as $i => $value)
+							{
+							echo("<td>".$value."</td>");
+							}
+							echo("<td><a href='edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo "</tr>";
+						}
+						echo("</table>");
+					}
+				?>
+				
 				<?php
 					if(isset($_POST['kwerenda3']))
 					{
@@ -166,24 +198,25 @@
 							exit();
 						}
 						echo("<table>
-						<tr>
-						<th>id</th> <th>Nazwa</th> <th>Cena</th>
-						</tr>");
-						while ($row = mysqli_fetch_row($result))
+							<tr>
+								<th>id</th>
+								<th>Nazwa</th>
+								<th>Cena</th>
+								<th>Edytuj</th>
+							</tr>");
+						while ($row = mysqli_fetch_assoc($result))
 						{
 							echo "<tr>";
-
-							foreach($row as $i)
+							foreach($row as $i => $value)
 							{
-							echo("<td>".$i."</td>");
+								echo("<td>".$value."</td>");
 							}
+							echo("<td><a href='edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
 					}
 				?>
-				
-
 				</form>
 			</div>
 		</div>

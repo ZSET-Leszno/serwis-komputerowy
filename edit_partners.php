@@ -96,9 +96,10 @@
             {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
-                $price = $_POST['price'];
+                $description = $_POST['description'];
+                $URL = $_POST['link'];
 
-                $query = "UPDATE services SET name='$name', price='$price' WHERE id='$id';";
+                $query = "UPDATE partners SET name='$name', description='$description', link='$URL' WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -114,7 +115,7 @@
             else if(isset($_GET['id']))
             {
                 $id = $_GET['id'];
-                $query = "SELECT * FROM services WHERE id='$id';";
+                $query = "SELECT * FROM partners WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -133,8 +134,10 @@
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                 <label>Nazwa:</label><br>
                 <input type="text" name="name" value="<?php echo $row['name']; ?>" style="width: 300px;"><br>
-                <label>Cena (zł):</label><br>
-                <input type="text" name="price" value="<?php echo $row['price']; ?>" style="width: 50px;"><br><br>
+                <label>Opis:</label><br>
+                <input type="text" name="price" value="<?php echo $row['description']; ?>"><br>
+                <label>Link:</label><br>
+                <input type="text" name="URL" value="<?php echo $row['link']; ?>" style="width: 300px;"><br><br>
                 <input type="submit" name="submit" value="Zapisz zmiany">
             </form>
 

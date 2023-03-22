@@ -180,7 +180,7 @@
 							{
 							echo("<td>".$value."</td>");
 							}
-							echo("<td><a href='edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td><a href='edit/edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -211,7 +211,7 @@
 							{
 								echo("<td>".$value."</td>");
 							}
-							echo("<td><a href='edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td><a href='edit/edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");

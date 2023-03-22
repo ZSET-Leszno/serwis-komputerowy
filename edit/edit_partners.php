@@ -80,7 +80,7 @@
 			</div>
 			
 			<div id="content" style="min-height: 400px; height: fit-content;">
-				<span class="bigtitle">Edycja usługi</span>
+				<span class="bigtitle">Edycja danych partnera</span>
 				
 				<div class="dottedline"></div>
 
@@ -97,7 +97,7 @@
                 $id = $_POST['id'];
                 $name = $_POST['name'];
                 $description = $_POST['description'];
-                $URL = $_POST['link'];
+                $URL = $_POST['URL'];
 
                 $query = "UPDATE partners SET name='$name', description='$description', link='$URL' WHERE id='$id';";
                 $result = mysqli_query($link, $query);
@@ -135,7 +135,7 @@
                 <label>Nazwa:</label><br>
                 <input type="text" name="name" value="<?php echo $row['name']; ?>" style="width: 300px;"><br>
                 <label>Opis:</label><br>
-                <input type="text" name="price" value="<?php echo $row['description']; ?>"><br>
+                <textarea rows="5" name="description" style="width: 300px;"><?php echo $row['description'];?></textarea><br>
                 <label>Link:</label><br>
                 <input type="text" name="URL" value="<?php echo $row['link']; ?>" style="width: 300px;"><br><br>
                 <input type="submit" name="submit" value="Zapisz zmiany">

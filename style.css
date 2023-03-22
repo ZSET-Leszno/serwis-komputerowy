@@ -262,3 +262,10 @@ th:first-child,td:first-child
 	height: 300px;
 	resize: none;
 }
+
+.seccessText
+{
+	font-weight: bolder;
+	font-size: large;
+	color: rgb(0, 170, 0);
+}

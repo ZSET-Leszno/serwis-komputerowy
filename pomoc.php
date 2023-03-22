@@ -48,69 +48,83 @@
 		
 		<br>
 		
-		<div id="sidebar">
-			<a href="home.php">
-				<div class="optionL">
-					Jak to działa?
-				</div>
-			</a>
+		<div class="subcontainer">
+			<div id="sidebar" style="height: inherit;">
+				<a href="home.php">
+					<div class="optionL">
+						Jak to działa?
+					</div>
+				</a>
 
-			<a href="order.php">
-				<div class="optionL">
-					Zamawianie
-				</div>
-			</a>
+				<a href="order.php">
+					<div class="optionL">
+						Zamawianie
+					</div>
+				</a>
 
-			<a href="status.php">
-				<div class="optionL">
-					Status
-				</div>
-			</a>
+				<a href="status.php">
+					<div class="optionL">
+						Status
+					</div>
+				</a>
 
-            <a href="partnerzy-home.php">
-				<div class="optionL">
-					Partnerzy
-				</div>
-			</a>
+				<a href="partnerzy-home.php">
+					<div class="optionL">
+						Partnerzy
+					</div>
+				</a>
 
-			<a href="lokalizacja-home.php">
-				<div class="optionL">
-					Lokalizacja
-				</div>
-			</a>
+				<a href="lokalizacja-home.php">
+					<div class="optionL">
+						Lokalizacja
+					</div>
+				</a>
 
-			<a href="pomoc.php">
-				<div class="optionL">
-					<b>Pomoc</b>
-				</div>
-			</a>
-		</div>
-		
-		<div id="content">
-			<span class="bigtitle">Pomoc</span>
+				<a href="pomoc.php">
+					<div class="optionL">
+						<b>Pomoc</b>
+					</div>
+				</a>
+			</div>
 			
-			<div class="dottedline"></div>
-			
-			<h3>Napotkałeś problem z naszymi usługami?</h3>
-			<h3>Usługa nie została wykonana prawidłowo?</h3>
-			<h3>Usługa nie została wykonana na czas?</h3>
-			<h3>Sprzęt nie dotarł na czas?</h3>
+			<div id="content" style="height: fit-content;">
+				<span class="bigtitle">Pomoc</span>
+				
+				<div class="dottedline"></div>
+				
+				<h3>Napotkałeś problem z naszymi usługami?</h3>
+				<h3>Usługa nie została wykonana prawidłowo?</h3>
+				<h3>Usługa nie została wykonana na czas?</h3>
+				<h3>Sprzęt nie dotarł na czas?</h3>
 
-			<br>
+				<br>
 
-			<h2>Napisz do nas!</h2>
-            Możesz napisać na nasz mail <a href="mailto:info@pcexpress.com">info@pcexpress.com</a>, lub skontaktować się z nami przez poniższy formularz kontaktowy.
+				<h2>Napisz do nas!</h2>
+				Możesz napisać na nasz mail <a href="mailto:info@pcexpress.com">info@pcexpress.com</a>, lub skontaktować się z nami przez poniższy formularz kontaktowy.
 
-			<br><br><br>
+				<br><br>
 
-			<form action="mailto:info@pcexpress.com" method="post" enctype="text/plain">
+				<?php
+					if (isset($_SESSION['isSend']) && $_SESSION['isSend'] != 'false')
+					{
+						echo "<center><span class='seccessText'>Wiadomość została wysłana</span></center><br>";
+					}
 
-			<textarea id="help-textarea" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość (max 3000 znaków)"></textarea>	
+					$_SESSION['isSend'] = 'false';
+				?>
 
-			
-			<button type="submit">Wyślij</button>
+				<form action="help-includer.php" method="post">
 
-			</form>
+				<textarea id="help-textarea" name="help-text" minlength="10" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość (max 3000 znaków)" required></textarea>	
+
+				<br><br>
+
+				<center>
+				<button type="submit" style="padding: 8px 13px">Wyślij</button>
+				</center>
+
+				</form>
+			</div>
 		</div>	
 		
 		<div id="footer">

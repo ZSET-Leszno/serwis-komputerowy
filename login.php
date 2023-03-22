@@ -115,7 +115,7 @@
 					$password = $_POST["password"];
 					$hashed_password = md5($password);
 					
-					$query = "SELECT email, password, privileges FROM users WHERE email = '". $email ."'";
+					$query = "SELECT id, email, password, privileges FROM users WHERE email = '". $email ."'";
 					$result = mysqli_query($link, $query);
 					$resultTab = mysqli_fetch_assoc($result);
 
@@ -130,6 +130,7 @@
 						session_start();
 
 						$_SESSION['email'] = $email;
+						$_SESSION['id'] = $resultTab['id'];
 
 						if ($resultTab['privileges'] != "admin")
 						{
@@ -137,7 +138,7 @@
 
 							exit();
 						}
-						else
+						else if ($resultTab['privileges'] != "customer")
 						{
 							header('Location: admin.php');
 	

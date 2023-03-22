@@ -23,7 +23,7 @@
     ?>
 
 
-	<div id="container">
+	<div id="container" style="min-width: 1000px; width: fit-content;">
 	
 		<div id="logo">
 			PCExpress
@@ -79,7 +79,7 @@
 
 			</div>
 			
-			<div id="content" style="min-height: 400px; height: fit-content;">
+			<div id="content" style="min-height: 400px; height: fit-content; min-width: 730px; width: max-content">
 				<span class="bigtitle">Kwerendy</span>
 				
 				<div class="dottedline"></div>
@@ -93,9 +93,10 @@
 				?>
 				<form method="post" action="admin.php">
 				<input type="submit" name="kwerenda1" value="Użytkownicy" style="padding: 5px 10px;">
-				<input type="submit" name="kwerenda2e" value="Partnerzy" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda2" value="Partnerzy" style="padding: 5px 10px;">
 				<input type="submit" name="kwerenda3" value="Usługi" style="padding: 5px 10px;">
 				<br><br>
+				
 				<?php
 					if(isset($_POST['kwerenda1']))
 					{
@@ -106,21 +107,33 @@
 							echo("Błąd zapytania: ".mysqli_error($link));
 							exit();
 						}
-						echo("<table id='kwerenda'>
-						<tr><th>id</th><th>Imię</th><th>Nazwisko</th><th>Miasto</th><th>Adres</th><th>Telefon</th><th>email</th><th>Uprawnienia</th>");
-						while ($row = mysqli_fetch_row($result))
+						echo("<table>
+						<tr>
+							<th>id</th>
+							<th>Imię</th>
+							<th>Nazwisko</th>
+							<th>Miasto</th>
+							<th>Adres</th>
+							<th>Telefon</th>
+							<th>email</th>
+							<th>Uprawnienia</th>
+							<th>Edycja</th>
+						</tr>");
+						while ($row = mysqli_fetch_assoc($result))
 						{
 							echo "<tr>";
+							
 							$count = 0;
-							foreach($row as $i)
+							foreach($row as $i => $value)
 							{
 								$count += 1;
 								if ($count == 8)
 								{
 									continue;
 								}
-								echo("<td>".$i."</td>");
+								echo("<td>".$value."</td>");
 							}
+							echo("<td style='text-align: center;'><a href='edit/edit_users.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -129,33 +142,6 @@
 
 				<?php
 					if(isset($_POST['kwerenda2']))
-					{
-						$query = "SELECT * FROM partners;";
-						$result = mysqli_query($link, $query);
-						if (!$result)
-						{
-							echo("Błąd zapytania: ".mysqli_error($link));
-							exit();
-						}
-						echo("<table>
-						<tr>
-							<th>id</th> <th>Nazwa</th> <th>Opis</th> <th>Link</th>
-						</tr>");
-						while ($row = mysqli_fetch_row($result))
-						{
-							echo "<tr>";
-
-							foreach($row as $i)
-							{
-							echo("<td>".$i."</td>");
-							}
-							echo "</tr>";
-						}
-						echo("</table>");
-					}
-				?>
-				<?php
-					if(isset($_POST['kwerenda2e']))
 					{
 						$query = "SELECT * FROM partners;";
 						$result = mysqli_query($link, $query);
@@ -180,7 +166,7 @@
 							{
 							echo("<td>".$value."</td>");
 							}
-							echo("<td><a href='edit/edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td style='text-align: center;'><a href='edit/edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -211,7 +197,7 @@
 							{
 								echo("<td>".$value."</td>");
 							}
-							echo("<td><a href='edit/edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td style='text-align: center;'><a href='edit/edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");

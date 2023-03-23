@@ -42,13 +42,20 @@
 					Wyloguj
 				</div>
 			</form>
+
+			<a href="cart.php">
+				<div class="option">
+					Koszyk
+				</div>
+			</a>
 			
 			<div style="clear:both;"></div>
 		</div>
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="subcontainer">
+		<div id="sidebar" style="height: inherit;">
 			<a href="home.php">
 				<div class="optionL">
 					Jak to działa?
@@ -86,12 +93,13 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
+		<div id="content" style="height: fit-content;">
 			<span class="bigtitle">Status wykonania usług</span>
 			
 			<div class="dottedline"></div>
 			
             
+		</div>
 		</div>	
 		
 		<div id="footer">

@@ -42,13 +42,13 @@
 					Wyloguj
 				</div>
 			</form>
-			
+
 			<a href="cart.php">
 				<div class="option">
-					Koszyk
+					<b>Koszyk</b>
 				</div>
 			</a>
-
+			
 			<div style="clear:both;"></div>
 		</div>
 		
@@ -62,7 +62,7 @@
 				</div>
 			</a>
 
-            <a href="order.php">
+			<a href="order.php">
 				<div class="optionL">
 					Zamawianie
 				</div>
@@ -76,7 +76,7 @@
 
             <a href="partnerzy-home.php">
 				<div class="optionL">
-					<b>Partnerzy</b>
+					Partnerzy
 				</div>
 			</a>
 
@@ -94,36 +94,11 @@
 		</div>
 		
 		<div id="content" style="height: fit-content;">
-			<span class="bigtitle">Nasi partnerzy</span>
+			<span class="bigtitle">Usługi w koszyku</span>
 			
 			<div class="dottedline"></div>
 			
-            <table id="partners">
-			<?php
-					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
-
-					if (!$link)
-					{
-						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
-					}
-
-					
-					$result = mysqli_query($link, "SELECT link, name, description FROM partners;");
-
-					while ($row = mysqli_fetch_row($result))
-					{
-						echo "<tr>";
-
-						
-						echo "<td class='partnerlink' width='100px'><b> <a href='$row[0]' target='_blank'>$row[1]</a> </b></td>";
-						echo "<td>". $row[2] ."</td>";
-
-						echo "</tr>";
-					}
-
-					mysqli_close($link);
-				?>
-			</table>
+			<center>TODO</center>
 		</div>	
 
 		</div>

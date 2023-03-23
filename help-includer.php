@@ -16,7 +16,7 @@ if (!$link)
     die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
 }
 
-mysqli_query($link, "INSERT INTO `help-requests`(`user_id`, `content`) VALUES ('". $_SESSION['id'] ."', '". $_POST["help-text"] ."');");
+mysqli_query($link, "INSERT INTO `help-requests`(`user_id`, `content`, `title`) VALUES ('". $_SESSION['id'] ."', '". $_POST["help-text"] ."', '". $_POST["help-title"] ."');");
 
 mysqli_close($link);
 
@@ -24,4 +24,5 @@ mysqli_close($link);
 $_SESSION['isSend'] = "true";
 header('Location: pomoc.php');
 exit();
+
 ?>

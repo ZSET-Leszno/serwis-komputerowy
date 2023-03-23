@@ -269,3 +269,12 @@ th:first-child,td:first-child
 	font-size: large;
 	color: rgb(0, 170, 0);
 }
+
+table .button
+{
+	text-align: center;
+	color: white;
+	border: 2px;
+	background-color: #128870;
+	padding: 2px;
+}

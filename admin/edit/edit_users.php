@@ -4,8 +4,7 @@
 	<meta charset="utf-8" />
 	<title>PCExpress</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="../../style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
@@ -15,7 +14,7 @@
 
         if (!isset($_SESSION['email']))
         {
-            header('Location: login.php');
+            header('Location: ../../login.php');
             exit();
         }
 
@@ -47,7 +46,7 @@
 			</b>
 			</div>
 
-			<form id="logoutform" action="logout.php">
+			<form id="logoutform" action="../logout.php">
 				<div class="option" onclick="submitForm()">
 					Wyloguj
 				</div>
@@ -59,24 +58,11 @@
 		<br>
 		<div id="subcontainer">
 			<div id="sidebar" style="height: inherit;">
-				<a href="admin.php">
+				<a href="../admin.php">
 					<div class="optionL">
-						<b>Strona główna</b>
+						<b>Powrót</b>
 					</div>
 				</a>
-
-				<a href="">
-					<div class="optionL">
-						Baza danych
-					</div>
-				</a>
-
-				<a href="">
-					<div class="optionL">
-						Zamówienia
-					</div>
-				</a>
-
 			</div>
 			
 			<div id="content" style="min-height: 400px; height: fit-content;">
@@ -95,10 +81,15 @@
             if(isset($_POST['submit']))
             {
                 $id = $_POST['id'];
-                $name = $_POST['name'];
-                $price = $_POST['price'];
+                $firstname = $_POST['firstname'];
+				$lastname = $_POST['lastname'];
+				$city = $_POST['city'];
+				$address = $_POST['address'];
+				$phone = $_POST['phone'];
+				$email = $_POST['email'];
+				$privileges = $_POST['privileges'];
 
-                $query = "UPDATE services SET name='$name', price='$price' WHERE id='$id';";
+                $query = "UPDATE users SET firstname='$firstname', lastname='$lastname', city='$city', address='$address', phone='$phone', email='$email', privileges='$privileges' WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -107,14 +98,14 @@
                 }
                 else
                 {
-                    header("Location: admin.php"); // przekierowanie na stronę główną po zapisaniu zmian
+                    header("Location: ../admin.php"); // przekierowanie na stronę główną po zapisaniu zmian
                     exit();
                 }
             }
             else if(isset($_GET['id']))
             {
                 $id = $_GET['id'];
-                $query = "SELECT * FROM services WHERE id='$id';";
+                $query = "SELECT * FROM users WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -131,10 +122,27 @@
             ?>
             <form method="post">
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                <label>Nazwa:</label><br>
-                <input type="text" name="name" value="<?php echo $row['name']; ?>" style="width: 300px;"><br>
-                <label>Cena (zł):</label><br>
-                <input type="text" name="price" value="<?php echo $row['price']; ?>" style="width: 50px;"><br><br>
+                <label>Imię:</label><br>
+                <input type="text" name="firstname" value="<?php echo $row['firstname']; ?>" style="width: 300px;"><br>
+                <label>Nazwisko:</label><br>
+                <input type="text" name="lastname" value="<?php echo $row['lastname']; ?>" style="width: 300px;"><br>
+				<label>Miasto:</label><br>
+                <input type="text" name="city" value="<?php echo $row['city']; ?>" style="width: 300px;"><br>
+				<label>Adres:</label><br>
+                <input type="text" name="address" value="<?php echo $row['address']; ?>" style="width: 300px;"><br>
+				<label>Numer Telefonu:</label><br>
+                <input type="tel" name="phone" value="<?php echo $row['phone']; ?>" style="width: 300px;"><br>
+				<label>Adres email:</label><br>
+                <input type="email" name="email" value="<?php echo $row['email']; ?>" style="width: 300px;"><br>
+				<label>Typ użytkownika:</label><br>
+                <select name="privileges" style="width: 300px;">
+					<optgroup label="Stan obecny">
+						<option value="<?php echo $row['privileges']; ?>"><?php echo $row['privileges']; ?></option>
+					<optgroup label="Zmień uprawnienia">			
+						<option value="admin">admin</option>
+						<option value="customer">customer</option>
+				</select><br>
+				<br>
                 <input type="submit" name="submit" value="Zapisz zmiany">
             </form>
 

@@ -5,7 +5,7 @@
 	<title>PCExpress</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="../../style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
@@ -15,7 +15,7 @@
 
         if (!isset($_SESSION['email']))
         {
-            header('Location: login.php');
+            header('Location: ../../login.php');
             exit();
         }
 
@@ -47,7 +47,7 @@
 			</b>
 			</div>
 
-			<form id="logoutform" action="logout.php">
+			<form id="logoutform" action="../logout.php">
 				<div class="option" onclick="submitForm()">
 					Wyloguj
 				</div>
@@ -59,28 +59,15 @@
 		<br>
 		<div id="subcontainer">
 			<div id="sidebar" style="height: inherit;">
-				<a href="admin.php">
+				<a href="../admin.php">
 					<div class="optionL">
-						<b>Strona główna</b>
+						<b>Powrót</b>
 					</div>
 				</a>
-
-				<a href="">
-					<div class="optionL">
-						Baza danych
-					</div>
-				</a>
-
-				<a href="">
-					<div class="optionL">
-						Zamówienia
-					</div>
-				</a>
-
 			</div>
 			
 			<div id="content" style="min-height: 400px; height: fit-content;">
-				<span class="bigtitle">Edycja danych partnera</span>
+				<span class="bigtitle">Edycja usługi</span>
 				
 				<div class="dottedline"></div>
 
@@ -96,10 +83,9 @@
             {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
-                $description = $_POST['description'];
-                $URL = $_POST['URL'];
+                $price = $_POST['price'];
 
-                $query = "UPDATE partners SET name='$name', description='$description', link='$URL' WHERE id='$id';";
+                $query = "UPDATE services SET name='$name', price='$price' WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -108,14 +94,14 @@
                 }
                 else
                 {
-                    header("Location: admin.php"); // przekierowanie na stronę główną po zapisaniu zmian
+                    header("Location: ../admin.php"); // przekierowanie na stronę główną po zapisaniu zmian
                     exit();
                 }
             }
             else if(isset($_GET['id']))
             {
                 $id = $_GET['id'];
-                $query = "SELECT * FROM partners WHERE id='$id';";
+                $query = "SELECT * FROM services WHERE id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -134,10 +120,8 @@
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                 <label>Nazwa:</label><br>
                 <input type="text" name="name" value="<?php echo $row['name']; ?>" style="width: 300px;"><br>
-                <label>Opis:</label><br>
-                <textarea rows="5" name="description" style="width: 300px;"><?php echo $row['description'];?></textarea><br>
-                <label>Link:</label><br>
-                <input type="text" name="URL" value="<?php echo $row['link']; ?>" style="width: 300px;"><br><br>
+                <label>Cena (zł):</label><br>
+                <input type="number" name="price" value="<?php echo $row['price']; ?>" style="width: 50px;"><br><br>
                 <input type="submit" name="submit" value="Zapisz zmiany">
             </form>
 

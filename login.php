@@ -140,7 +140,7 @@
 						}
 						else if ($resultTab['privileges'] != "customer")
 						{
-							header('Location: admin.php');
+							header('Location: admin/admin.php');
 	
 							exit();
 						}

@@ -5,7 +5,7 @@
 	<title>PCExpress</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="../style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
@@ -15,7 +15,7 @@
 
         if (!isset($_SESSION['email']))
         {
-            header('Location: login.php');
+            header('Location: ../login.php');
             exit();
         }
 
@@ -38,7 +38,7 @@
 
 				if (!isset($_SESSION['email']))
 				{
-					header('Location: login.php');
+					header('Location: ../login.php');
 					exit();
 				}
 
@@ -47,7 +47,7 @@
 			</b>
 			</div>
 
-			<form id="logoutform" action="logout.php">
+			<form id="logoutform" action="../logout.php">
 				<div class="option" onclick="submitForm()">
 					Wyloguj
 				</div>
@@ -61,13 +61,13 @@
 			<div id="sidebar" style="height: inherit;">
 				<a href="admin.php">
 					<div class="optionL">
-						<b>Strona główna</b>
+						Strona główna
 					</div>
 				</a>
 
-				<a href="">
+				<a href="help.php">
 					<div class="optionL">
-						Baza danych
+						<b>Pomoc</b>
 					</div>
 				</a>
 
@@ -91,16 +91,16 @@
 					}
 					
 				?>
-				<form method="post" action="admin.php">
-				<input type="submit" name="kwerenda1" value="Użytkownicy" style="padding: 5px 10px;">
-				<input type="submit" name="kwerenda2" value="Partnerzy" style="padding: 5px 10px;">
-				<input type="submit" name="kwerenda3" value="Usługi" style="padding: 5px 10px;">
+				<form method="post" action="help.php">
+				<input type="submit" name="kwerenda1" value="Oczekujące" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda2" value="Otwarte" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda3" value="Zamknięte" style="padding: 5px 10px;">
 				<br><br>
 				
 				<?php
 					if(isset($_POST['kwerenda1']))
 					{
-						$query = "SELECT * FROM users;";
+						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = '0' AND is_closed = '0';";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -110,14 +110,9 @@
 						echo("<table>
 						<tr>
 							<th>id</th>
-							<th>Imię</th>
-							<th>Nazwisko</th>
-							<th>Miasto</th>
-							<th>Adres</th>
-							<th>Telefon</th>
-							<th>email</th>
-							<th>Uprawnienia</th>
-							<th>Edycja</th>
+							<th>Tytuł</th>
+							<th>Adres email</th>
+							<th></th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -127,23 +122,34 @@
 							foreach($row as $i => $value)
 							{
 								$count += 1;
-								if ($count == 8)
+								if ($count != 3)
 								{
-									continue;
+									echo("<td>".$value."</td>");
 								}
-								echo("<td>".$value."</td>");
+                                else
+                                {
+								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
+                                }
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_users.php?id=".$row['id']."'>Edytuj</a></td>");
+                            echo("<td style='text-align: center;'><a href='help.php?openid=".$row['id']."' style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
 					}
 				?>
+                <?php
+                    if (isset($_GET['openid']))
+                    {
+                        $id = $_GET['openid'];
+                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 1 WHERE id = ".$id.";");
+                    }
+                ?>
 
-				<?php
+
+                <?php
 					if(isset($_POST['kwerenda2']))
 					{
-						$query = "SELECT * FROM partners;";
+						$query = "SELECT `help-requests`.id, title, content, users.email, users.firstname, users.lastname FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = 1;   ";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -153,30 +159,48 @@
 						echo("<table>
 						<tr>
 							<th>id</th>
-							<th>Nazwa</th>
-							<th>Opis</th>
-							<th>Link</th>
-							<th>Edytuj</th>
+							<th>Tytuł</th>
+                            <th>Treść</th>
+							<th>Adres email</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+							<th>Zamknij</th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
 							echo "<tr>";
-
+							
+							$count = 0;
 							foreach($row as $i => $value)
 							{
-							echo("<td>".$value."</td>");
+								$count += 1;
+								if ($count != 4)
+								{
+									echo("<td>".$value."</td>");
+								}
+                                else
+                                {
+								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
+                                }
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td style='text-align: center;'><a href='help.php?closeid=".$row['id']."'>Zamknij</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
 					}
 				?>
+                <?php
+                    if (isset($_GET['closeid']))
+                    {
+                        $id = $_GET['closeid'];
+                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 0, is_closed = '1' WHERE id = ".$id.";");
+                    }
+                ?>
 				
 				<?php
 					if(isset($_POST['kwerenda3']))
 					{
-						$query = "SELECT * FROM services;";
+						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE is_closed = 1;   ";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -184,25 +208,42 @@
 							exit();
 						}
 						echo("<table>
-							<tr>
-								<th>id</th>
-								<th>Nazwa</th>
-								<th>Cena</th>
-								<th>Edytuj</th>
-							</tr>");
+						<tr>
+							<th>id</th>
+							<th>Tytuł</th>
+							<th>Adres email</th>
+                            <th>Otwórz ponownie</th>
+						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
 							echo "<tr>";
+							
+							$count = 0;
 							foreach($row as $i => $value)
 							{
-								echo("<td>".$value."</td>");
+								$count += 1;
+								if ($count != 3)
+								{
+									echo("<td>".$value."</td>");
+								}
+                                else
+                                {
+								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
+                                }
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
+                            echo("<td style='text-align: center;'><a href='help.php?reopenid=".$row['id']."'>Otwórz ponownie</a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
 					}
 				?>
+                <?php
+                    if (isset($_GET['reopenid']))
+                    {
+                        $id = $_GET['reopenid'];
+                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 1, is_closed = 0 WHERE id = ".$id.";");
+                    }
+                ?>
 				</form>
 			</div>
 		</div>

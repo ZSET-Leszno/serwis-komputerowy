@@ -11,6 +11,20 @@
 
 </head>
 
+<?php
+
+if(isset($_COOKIE['cart']))
+{
+    $koszyk = unserialize($_COOKIE['cart']);
+}
+else
+{
+    $koszyk = array();
+}
+
+
+
+?>
 
 <body>
 	<div id="container">
@@ -42,13 +56,19 @@
 					Wyloguj
 				</div>
 			</form>
+
+			<a href="cart.php">
+				<div class="option">
+					Koszyk
+				</div>
+			</a>
 			
 			<div style="clear:both;"></div>
 		</div>
 		
 		<br>
 		
-		<div class="subcontainer">
+		<div id="subcontainer">
 			<div id="sidebar" style="height: inherit;">
 				<a href="home.php">
 					<div class="optionL">
@@ -114,6 +134,10 @@
 				?>
 
 				<form action="help-includer.php" method="post">
+
+				<input type="text" name="help-title" placeholder="Temat twojej wiadomości" style="width: 99%" required>
+
+				<br><br>
 
 				<textarea id="help-textarea" name="help-text" minlength="10" maxlength="3000" placeholder="Tutaj wpisz swoją wiadomość (max 3000 znaków)" required></textarea>	
 

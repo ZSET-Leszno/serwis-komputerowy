@@ -43,7 +43,8 @@
 			<div style="clear:both;"></div>
 		</div>
 		
-		<div id="sidebar" style="height: 380px;">
+		<div id="subcontainer">
+		<div id="sidebar" style="height: inherit;">
 			<a href="index.html">
 				<div class="optionL">
 					Strona główna
@@ -69,7 +70,7 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 380px;">
+		<div id="content" style="height: fit-content;">
 			<span class="bigtitle">Nasi partnerzy</span>
 			
 			<div class="dottedline"></div>
@@ -102,6 +103,8 @@
 			</table>
 			
 		</div>	
+
+		</div>
 		
 		<div id="footer">
 			© 2023 PCExpress Sp. z o.o. Wszelkie prawa zastrzeżone.

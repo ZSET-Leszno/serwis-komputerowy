@@ -42,13 +42,20 @@
 					Wyloguj
 				</div>
 			</form>
+
+			<a href="cart.php">
+				<div class="option">
+					Koszyk
+				</div>
+			</a>
 			
 			<div style="clear:both;"></div>
 		</div>
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="subcontainer">
+		<div id="sidebar" style="height: inherit;">
 			<a href="home.php">
 				<div class="optionL">
 					Jak to działa?
@@ -86,13 +93,42 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
+		<div id="content" style="height: fit-content;">
 			<span class="bigtitle">Zamawianie usług</span>
 			
 			<div class="dottedline"></div>
 			
-            
+			<table id="uslugi">
+                <thead>
+                  <tr>
+                    <th>Usługa</th>
+                    <th>Cena</th>
+					<th></th>
+                  </tr>
+                </thead>
+				
+                <tbody>
+					<?php
+						$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+
+						if (!$link)
+						{
+							die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+						}
+
+						
+						$result = mysqli_query($link, "SELECT id, name, price FROM services;");
+						$resultTab = mysqli_fetch_assoc($result);
+
+						//////////////////TODO
+
+						mysqli_close($link);
+					?>
+                </tbody>
+            </table>
 		</div>	
+
+		</div>
 		
 		<div id="footer">
 			© 2023 PCExpress Sp. z o.o. Wszelkie prawa zastrzeżone.

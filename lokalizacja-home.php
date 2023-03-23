@@ -42,6 +42,12 @@
 					Wyloguj
 				</div>
 			</form>
+
+			<a href="cart.php">
+				<div class="option">
+					Koszyk
+				</div>
+			</a>
 			
 			<div style="clear:both;"></div>
 		</div>

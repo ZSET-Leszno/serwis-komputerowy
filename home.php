@@ -41,13 +41,20 @@
 					Wyloguj
 				</div>
 			</form>
+
+			<a href="cart.php">
+				<div class="option">
+					Koszyk
+				</div>
+			</a>
 			
 			<div style="clear:both;"></div>
 		</div>
 		
 		<br>
 		
-		<div id="sidebar" style="height: 430px;">
+		<div id="subcontainer">
+		<div id="sidebar" style="height: inherit;">
 			<a href="home.php">
 				<div class="optionL">
 					<b>Jak to działa?</b>
@@ -85,7 +92,7 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: 430px;">
+		<div id="content" style="height: fit-content;">
 			<span class="bigtitle">Jak to działa?</span>
 			
 			<div class="dottedline"></div>
@@ -140,6 +147,8 @@
                 </table>
             </center>
 		</div>	
+
+		</div>
 		
 		<div id="footer">
 			© 2023 PCExpress Sp. z o.o. Wszelkie prawa zastrzeżone.

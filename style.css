@@ -93,6 +93,11 @@ body
 	line-height: 23px;
 }
 
+#footer a
+{
+	color: #128870;
+}
+
 #username
 {
 	float: right;

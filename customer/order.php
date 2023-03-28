@@ -127,11 +127,9 @@
 
 							echo '<td>'. $row['name'] .'</td>';
 							echo '<td>' . number_format($row['price'], 2, ',', ' ') . ' zł</td>';
-							echo '<td><a style="text-decoration: none; color: white;" href="cart-includer.php?id='. $row['service_id'] .'><div class="button">DODAJ<div></a></td>';
-
+							echo '<td><a style="text-decoration: none;" href="cart-includer.php?id='. $row["service_id"] .'"><div class="button">DODAJ</div></a></td>';
 							echo '</tr>';
 						}
-
 						mysqli_close($link);
 					?>
                 </tbody>

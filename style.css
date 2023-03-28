@@ -180,6 +180,7 @@ th
 th:last-child
 {
 	text-align: center;
+	min-width: 100px;
 }
 
 th:first-child,td:first-child
@@ -193,11 +194,7 @@ th:first-child,td:first-child
 {
 	background-color: #f5f5f5;
 }
-  
-#uslugi>tbody>tr>td:last-child::after
-{
-	content: " zł";
-}
+
 
 #uslugi>tbody>tr>td:last-child
 {
@@ -274,16 +271,14 @@ table .button
 {
 	text-align: center;
 	color: white;
-	border: 2px;
 	background-color: #128870;
 	padding: 4px;
 }
 
 table .button:hover
 {
-	text-align: center;
 	color: white;
-	border: 2px;
+	text-align: center;
 	background-color: #0e6b59;
-	padding: 4	px;
+	padding: 4px;
 }

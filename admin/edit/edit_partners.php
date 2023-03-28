@@ -5,7 +5,7 @@
 	<title>PCExpress</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<link rel="stylesheet" href="../style.css" type="text/css" />
+	<link rel="stylesheet" href="../../style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
@@ -18,11 +18,7 @@
             header('Location: ../../login.php');
             exit();
         }
-
-
     ?>
-
-
 	<div id="container">
 	
 		<div id="logo">
@@ -163,6 +159,9 @@
 	
 	</div>
 	<script>
+<?php
+	mysqli_close($link);
+?>
 function submitForm()
 	{
 		document.getElementById("logoutform").submit();

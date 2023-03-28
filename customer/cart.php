@@ -93,7 +93,7 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: fit-content;">
+		<div id="content" style="min-height: 300px; height: fit-content;">
 			<span class="bigtitle">Usługi w koszyku</span>
 			
 			<div class="dottedline"></div>
@@ -101,11 +101,10 @@
 			<table>
 			<?php
 
-			$cartTab = json_decode($_SESSION['cart'], true);
-
-			
-
-			echo "</tr>";
+			foreach (unserialize($_COOKIE['cart']) as $i)
+			{
+				echo "$i<br>";
+			}
 
 			?>
 			</table>

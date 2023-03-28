@@ -114,9 +114,16 @@
 			<table>
 			<?php
 
-			foreach (unserialize($_COOKIE['cart']) as $i)
+			if (!isset($_COOKIE['cart']))
 			{
-				echo "$i<br>";
+				echo "<span style='font-size: 25px;'>Koszyk jest pusty</span>";
+			}
+			else
+			{
+				foreach (unserialize($_COOKIE['cart']) as $i)
+				{
+					echo "$i<br>";
+				}
 			}
 
 			?>

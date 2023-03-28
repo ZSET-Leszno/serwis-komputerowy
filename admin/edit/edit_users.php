@@ -181,6 +181,9 @@
 	
 	</div>
 	<script>
+<?php
+	mysqli_close($link);
+?>
 function submitForm()
 	{
 		document.getElementById("logoutform").submit();

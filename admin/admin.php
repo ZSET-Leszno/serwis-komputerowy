@@ -61,7 +61,7 @@
 			<div id="sidebar" style="height: inherit;">
 				<a href="admin.php">
 					<div class="optionL">
-						<b>Strona główna</b>
+						<b>Edycja</b>
 					</div>
 				</a>
 
@@ -71,7 +71,7 @@
 					</div>
 				</a>
 
-				<a href="">
+				<a href="orders.php">
 					<div class="optionL">
 						Zamówienia
 					</div>
@@ -117,7 +117,7 @@
 							<th>Telefon</th>
 							<th>email</th>
 							<th>Uprawnienia</th>
-							<th>Edycja</th>
+							<th></th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -133,7 +133,7 @@
 								}
 								echo("<td>".$value."</td>");
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_users.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td><a href='edit/edit_users.php?id=".$row['id']."'style='text-decoration:none;'><div class='button'>Edytuj</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -156,7 +156,7 @@
 							<th>Nazwa</th>
 							<th>Opis</th>
 							<th>Link</th>
-							<th>Edytuj</th>
+							<th></th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -175,7 +175,7 @@
 									echo("<td><a href=".$value." target='_blank'>".$value."</a></td>");
 								}
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_partners.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td><a href='edit/edit_partners.php?id=".$row['id']."'style='text-decoration:none;'><div class='button'>Edytuj</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -197,7 +197,7 @@
 								<th>id</th>
 								<th>Nazwa</th>
 								<th>Cena</th>
-								<th>Edytuj</th>
+								<th></th>
 							</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -206,7 +206,7 @@
 							{
 								echo("<td>".$value."</td>");
 							}
-							echo("<td style='text-align: center;'><a href='edit/edit_service.php?id=".$row['id']."'>Edytuj</a></td>");
+							echo("<td><a href='edit/edit_service.php?id=".$row['service_id']."'style='text-decoration:none;'><div class='button'>Edytuj</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -247,6 +247,9 @@
 	
 	</div>
 	<script>
+<?php
+	mysqli_close($link);
+?>
 function submitForm()
 	{
 		document.getElementById("logoutform").submit();

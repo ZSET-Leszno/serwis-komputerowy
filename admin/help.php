@@ -61,7 +61,7 @@
 			<div id="sidebar" style="height: inherit;">
 				<a href="admin.php">
 					<div class="optionL">
-						Strona główna
+						Edycja
 					</div>
 				</a>
 
@@ -71,7 +71,7 @@
 					</div>
 				</a>
 
-				<a href="">
+				<a href="orders.php">
 					<div class="optionL">
 						Zamówienia
 					</div>
@@ -131,7 +131,7 @@
 								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
                                 }
 							}
-                            echo("<td style='text-align: center;'><a href='help.php?openid=".$row['id']."' style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
+                            echo("<td><a href='help.php?openid=".$row['id']."' style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -142,6 +142,7 @@
                     {
                         $id = $_GET['openid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 1 WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
                     }
                 ?>
 
@@ -149,7 +150,7 @@
                 <?php
 					if(isset($_POST['kwerenda2']))
 					{
-						$query = "SELECT `help-requests`.id, title, content, users.email, users.firstname, users.lastname FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = 1;   ";
+						$query = "SELECT `help-requests`.id, title, content, order_id, users.email, users.firstname, users.lastname FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = 1;   ";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -161,6 +162,7 @@
 							<th>id</th>
 							<th>Tytuł</th>
                             <th>Treść</th>
+							<th>Id zamówienia</th>
 							<th>Adres email</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
@@ -174,16 +176,20 @@
 							foreach($row as $i => $value)
 							{
 								$count += 1;
-								if ($count != 4)
+								if ($count == 3)
 								{
-									echo("<td>".$value."</td>");
+									echo("<td style='text-align: justify;'>".$value."</td>");
+								}
+								elseif ($count == 5)
+								{
+									echo("<td><a href=mailto:".$value.">".$value."</a></td>");
 								}
                                 else
                                 {
-								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
+								    echo("<td>".$value."</td>");
                                 }
 							}
-							echo("<td style='text-align: center;'><a href='help.php?closeid=".$row['id']."'style='text-decoration:none'><div class='button'>Zamknij</div></a></td>");
+							echo("<td><a href='help.php?closeid=".$row['id']."'style='text-decoration:none'><div class='button'>Zamknij</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -194,6 +200,7 @@
                     {
                         $id = $_GET['closeid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 0, is_closed = '1' WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
                     }
                 ?>
 				
@@ -231,7 +238,7 @@
 								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
                                 }
 							}
-                            echo("<td style='text-align: center;'><a href='help.php?reopenid=".$row['id']."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
+                            echo("<td><a href='help.php?reopenid=".$row['id']."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -242,6 +249,7 @@
                     {
                         $id = $_GET['reopenid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 1, is_closed = 0 WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
                     }
                 ?>
 				</form>
@@ -278,6 +286,9 @@
 		</div>
 	
 	</div>
+<?php
+	mysqli_close($link);
+?>
 	<script>
 function submitForm()
 	{

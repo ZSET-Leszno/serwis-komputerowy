@@ -81,11 +81,11 @@
 
             if(isset($_POST['submit']))
             {
-                $id = $_POST['id'];
+                $id = $_POST['service_id'];
                 $name = $_POST['name'];
                 $price = $_POST['price'];
 
-                $query = "UPDATE services SET name='$name', price='$price' WHERE id='$id';";
+                $query = "UPDATE services SET name='$name', price='$price' WHERE service_id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -101,7 +101,7 @@
             else if(isset($_GET['id']))
             {
                 $id = $_GET['id'];
-                $query = "SELECT * FROM services WHERE id='$id';";
+                $query = "SELECT * FROM services WHERE service_id='$id';";
                 $result = mysqli_query($link, $query);
                 if (!$result)
                 {
@@ -117,7 +117,7 @@
             }
             ?>
             <form method="post">
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="service_id" value="<?php echo $row['service_id']; ?>">
                 <label>Nazwa:</label><br>
                 <input type="text" name="name" value="<?php echo $row['name']; ?>" style="width: 300px;"><br>
                 <label>Cena (zł):</label><br>
@@ -160,6 +160,9 @@
 	
 	</div>
 	<script>
+<?php
+	mysqli_close($link);
+?>
 function submitForm()
 	{
 		document.getElementById("logoutform").submit();

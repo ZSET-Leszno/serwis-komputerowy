@@ -188,9 +188,7 @@ th:first-child,td:first-child
 	padding-left: 20px;
 }
 
-#uslugi tr:hover,
-#partners tr:hover,
-#kwerenda tr:hover
+tr:hover
 {
 	background-color: #f5f5f5;
 }
@@ -269,6 +267,7 @@ th:first-child,td:first-child
 table .button
 {
 	text-align: center;
+	font-weight: 600;
 	color: white;
 	background-color: #128870;
 	padding: 4px;
@@ -276,8 +275,5 @@ table .button
 
 table .button:hover
 {
-	color: white;
-	text-align: center;
-	background-color: #0e6b59;
-	padding: 4px;
+	background-color: #0e6b59; 
 }

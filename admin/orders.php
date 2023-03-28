@@ -18,8 +18,6 @@
             header('Location: ../login.php');
             exit();
         }
-
-
     ?>
 
 
@@ -33,7 +31,6 @@
             <div id="username" style="float: left;">
 			<b>
 				<?php
-
 				session_start();
 
 				if (!isset($_SESSION['email']))
@@ -88,9 +85,12 @@
 					if(!$link)
 					{
 						die("Błąd połączenia z bazą danych \n". mysqli_error($link));
-					}
-					
+					}	
 				?>
+				<form method="post" action="orders.php">
+					
+				</form>
+
 				
 			</div>
 		</div>

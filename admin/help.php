@@ -142,6 +142,7 @@
                     {
                         $id = $_GET['openid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 1 WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
                     }
                 ?>
 
@@ -199,6 +200,7 @@
                     {
                         $id = $_GET['closeid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 0, is_closed = '1' WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
                     }
                 ?>
 				
@@ -247,6 +249,7 @@
                     {
                         $id = $_GET['reopenid'];
                         mysqli_query($link ,"UPDATE `help-requests` SET pending = 1, is_closed = 0 WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
                     }
                 ?>
 				</form>

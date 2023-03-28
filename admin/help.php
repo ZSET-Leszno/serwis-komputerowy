@@ -164,7 +164,7 @@
 							<th>Adres email</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
-							<th>Zamknij</th>
+							<th style='width: 100px'></th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -183,7 +183,7 @@
 								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
                                 }
 							}
-							echo("<td style='text-align: center;'><a href='help.php?closeid=".$row['id']."'>Zamknij</a></td>");
+							echo("<td style='text-align: center;'><a href='help.php?closeid=".$row['id']."'style='text-decoration:none'><div class='button'>Zamknij</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -212,7 +212,7 @@
 							<th>id</th>
 							<th>Tytuł</th>
 							<th>Adres email</th>
-                            <th>Otwórz ponownie</th>
+                            <th></th>
 						</tr>");
 						while ($row = mysqli_fetch_assoc($result))
 						{
@@ -231,7 +231,7 @@
 								    echo("<td><a href=mailto:".$value.">".$value."</a  ></td>");
                                 }
 							}
-                            echo("<td style='text-align: center;'><a href='help.php?reopenid=".$row['id']."'>Otwórz ponownie</a></td>");
+                            echo("<td style='text-align: center;'><a href='help.php?reopenid=".$row['id']."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");

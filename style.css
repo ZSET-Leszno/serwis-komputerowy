@@ -286,3 +286,23 @@ table .button:hover
 	background-color: #0e6b59;
 	padding: 4px;
 }
+
+.option2
+{
+	color: #128870;
+	float: right;
+	min-width: 50px;
+	height: 25px;
+	font-size: 18px;
+	padding: 10px;
+	/* border-right: 2px dotted #444444; */
+	opacity: 0.8;
+}
+
+.option2:hover
+{
+	color: white;
+	background-color: #128870;
+	cursor: pointer;
+	border-radius: 5px;
+}

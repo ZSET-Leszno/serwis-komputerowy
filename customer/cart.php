@@ -96,6 +96,19 @@
 		<div id="content" style="min-height: 300px; height: fit-content;">
 			<span class="bigtitle">Usługi w koszyku</span>
 			
+			<?php
+			
+			if (isset($_COOKIE['cart']))
+			{
+				echo 	'<a href="cart-eraser.php">
+							<div class="option2">
+								Wyczyść koszyk
+							</div>
+						</a>';
+			}
+
+			?>
+
 			<div class="dottedline"></div>
 			
 			<table>

@@ -8,7 +8,7 @@ if (!isset($_SESSION['email']))
     exit();
 }
 
-setcookie('cart', '', time() - 3600, '/');
+setcookie('cart', '', time() - 3600);
 
 header('Location: cart.php');
 

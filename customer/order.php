@@ -110,17 +110,27 @@
                 <tbody>
 					<?php
 						$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
-
 						if (!$link)
 						{
 							die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
 						}
 
+						$result = mysqli_query($link, "SELECT service_id, name, price FROM services;");
+						if (!$result)
+						{
+							echo "Błąd wykonania zapytania";
+						}
 						
-						$result = mysqli_query($link, "SELECT id, name, price FROM services;");
-						$resultTab = mysqli_fetch_assoc($result);
+						while ($row = mysqli_fetch_assoc($result))
+						{
+							echo '<tr>';
 
-						//////////////////TODO
+							echo '<td>'. $row['name'] .'</td>';
+							echo '<td>' . number_format($row['price'], 2, ',', ' ') . ' zł</td>';
+							echo '<td><a style="text-decoration: none; color: white;" href="cart-includer.php?id='. $row['service_id'] .'><div class="button">DODAJ<div></a></td>';
+
+							echo '</tr>';
+						}
 
 						mysqli_close($link);
 					?>

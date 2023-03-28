@@ -134,7 +134,7 @@
 
 						if ($resultTab['privileges'] != "admin")
 						{
-							header('Location: home.php');
+							header('Location: customer/home.php');
 
 							exit();
 						}

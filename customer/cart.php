@@ -6,7 +6,7 @@
 	<title>PCExpress</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="../style.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
@@ -37,7 +37,7 @@
 			</b>
 			</div>
 
-			<form id="logoutform" action="logout.php">
+			<form id="logoutform" action="../logout.php">
 				<div class="option" onclick="submitForm()">
 					Wyloguj
 				</div>
@@ -98,7 +98,17 @@
 			
 			<div class="dottedline"></div>
 			
-			<center>TODO</center>
+			<table>
+			<?php
+
+			$cartTab = json_decode($_SESSION['cart'], true);
+
+			
+
+			echo "</tr>";
+
+			?>
+			</table>
 		</div>	
 
 		</div>

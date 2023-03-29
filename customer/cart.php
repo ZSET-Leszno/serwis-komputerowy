@@ -28,7 +28,7 @@
 
 				if (!isset($_SESSION['email']))
 				{
-					header('Location: login.php');
+					header('Location: ../login.php');
 					exit();
 				}
 
@@ -93,20 +93,68 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: fit-content;">
+		<div id="content" style="min-height: 300px; height: fit-content;">
 			<span class="bigtitle">Usługi w koszyku</span>
 			
+			<?php
+			
+			if (isset($_COOKIE['cart']))
+			{
+				echo 	'<a href="cart-eraser.php">
+							<div class="option2">
+								Wyczyść koszyk
+							</div>
+						</a>';
+			}
+
+			?>
+
 			<div class="dottedline"></div>
 			
-			<table>
+			<table id="uslugi">
 			<?php
 
-			$cartTab = json_decode($_SESSION['cart'], true);
+			if (!isset($_COOKIE['cart']))
+			{
+				echo "<span style='font-size: 25px;'>Koszyk jest pusty</span>";
+			}
+			else
+			{
+				echo "<tr><th>Usługa</th><th>Cena</th><th></th></tr>";
 
-			
+				$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+				if (!$link)
+				{
+					die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+				}
 
-			echo "</tr>";
 
+				$cart = unserialize($_COOKIE['cart']);
+				sort($cart);
+
+				$totalPrice = 0;
+
+				foreach ($cart as $item)
+				{
+					$result = mysqli_query($link, "SELECT name, price, service_id FROM `services` WHERE service_id IN ($item)");
+					$row = mysqli_fetch_row($result);
+
+					$totalPrice += $row[1];
+
+					echo "<tr>";
+
+					echo "<td>". $row[0] ."</td>";
+					echo "<td>". number_format($row[1], 2, ',', ' ') ." zł</td>";
+					echo '<td><a style="text-decoration: none;" href="cart-element-eraser.php?id='. $row[2] .'"><div class="button">USUŃ</div></a></td>';
+
+					echo "</tr>";
+				}
+
+				echo "<tr style='height: 30px;'></tr>";
+				echo "<tr><th style='text-align: right;'>Łącznie:</th><th style='text-align: left;'> ". number_format($totalPrice, 2, ',', ' ') ."zł</th><th></th></tr>";
+
+				mysqli_close($link);	
+			}
 			?>
 			</table>
 		</div>	

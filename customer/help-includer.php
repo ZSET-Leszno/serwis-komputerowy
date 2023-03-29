@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION['email']) || !isset($_POST["help-text"]))
 {
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 

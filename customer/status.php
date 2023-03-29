@@ -28,7 +28,7 @@
 
 				if (!isset($_SESSION['email']))
 				{
-					header('Location: login.php');
+					header('Location: ../login.php');
 					exit();
 				}
 
@@ -93,7 +93,7 @@
 			</a>
 		</div>
 		
-		<div id="content" style="height: fit-content;">
+		<div id="content" style="min-height: 300px; height: fit-content;">
 			<span class="bigtitle">Status wykonania usług</span>
 			
 			<div class="dottedline"></div>

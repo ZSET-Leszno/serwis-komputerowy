@@ -153,10 +153,22 @@
 				echo "<tr style='height: 30px;'></tr>";
 				echo "<tr><th style='text-align: right;'>Łącznie:</th><th style='text-align: left;'> ". number_format($totalPrice, 2, ',', ' ') ."zł</th><th></th></tr>";
 
-				mysqli_close($link);	
+				mysqli_close($link);
 			}
 			?>
 			</table>
+
+			<?php
+			
+				if (isset($_COOKIE['cart']))
+				{
+					echo 	'<br>
+							<a href="" class="centerer" style="text-decoration: none;">
+								<div id="orderButton">ZAMÓW</div>
+							</a>';
+				}
+
+			?>
 		</div>	
 
 		</div>

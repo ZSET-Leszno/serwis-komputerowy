@@ -269,12 +269,33 @@ tr:hover
 	color: rgb(0, 170, 0);
 }
 
-table .button
+table .button,
+#orderButton
 {
 	text-align: center;
 	color: white;
 	background-color: #128870;
 	padding: 4px;
+}
+
+#orderButton
+{
+	width: 120px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-radius: 5px;
+	font-weight: bolder;
+}
+
+#orderButton:hover
+{
+	background-color: #0e6b59;
+}
+
+.centerer
+{
+	display: flex;
+	justify-content: center;
 }
 
 table .button:hover

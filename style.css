@@ -269,7 +269,7 @@ tr:hover
 	color: rgb(0, 170, 0);
 }
 
-table .button
+.button
 {
 	text-align: center;
 	font-weight: 600;
@@ -278,7 +278,7 @@ table .button
 	padding: 4px;
 }
 
-table .button:hover
+.button:hover
 {
 	background-color: #0e6b59; 
 }

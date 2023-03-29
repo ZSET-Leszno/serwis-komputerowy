@@ -18,6 +18,8 @@
             header('Location: ../login.php');
             exit();
         }
+
+
     ?>
 
 
@@ -31,6 +33,7 @@
             <div id="username" style="float: left;">
 			<b>
 				<?php
+
 				session_start();
 
 				if (!isset($_SESSION['email']))
@@ -70,7 +73,7 @@
 
 				<a href="orders.php">
 					<div class="optionL">
-                        <b>Zamówienia</b>
+						<b>Zamówienia</b>
 					</div>
 				</a>
 
@@ -85,13 +88,149 @@
 					if(!$link)
 					{
 						die("Błąd połączenia z bazą danych \n". mysqli_error($link));
-					}	
+					}
+					
 				?>
 				<form method="post" action="orders.php">
-					
-				</form>
-
+				<input type="submit" name="kwerenda1" value="Oczekujące" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda2" value="Otwarte" style="padding: 5px 10px;">
+				<input type="submit" name="kwerenda3" value="Zakończone" style="padding: 5px 10px;">
+				<br><br>
 				
+				<?php
+					if(isset($_POST['kwerenda1']))
+					{
+						$query = "SELECT o.order_id, o.date, COUNT(os.service_id) FROM `orders` AS o JOIN `orders-services` AS os ON o.order_id = os.order_id WHERE is_closed = 0 AND pending = 0 GROUP BY o.order_id;";
+						$result = mysqli_query($link, $query);
+						if (!$result)
+						{
+							echo("Błąd zapytania: ".mysqli_error($link));
+							exit();
+						}
+						echo("<table>
+						<tr>
+							<th>id</th>
+							<th>Data zamówienia</th>
+							<th>Liczba zamówionych usług</th>
+							<th></th>
+						</tr>");
+						while ($row = mysqli_fetch_assoc($result))
+						{
+							echo "<tr>";
+							
+							foreach($row as $i => $value)
+							{
+								echo("<td>".$value."</td>");
+							}
+                            echo("<td><a href='orders.php?openid=".$row['id']."' style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
+							echo "</tr>";
+						}
+						echo("</table>");
+					}
+				?>
+                <?php
+                    if (isset($_GET['openid']))
+                    {
+                        $id = $_GET['openid'];
+                        mysqli_query($link , "UPDATE orders SET pending = 1 WHERE order_id = 1;");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
+                    }
+                ?>
+
+
+                <?php
+					if(isset($_POST['kwerenda2']))
+					{
+						$query = "SELECT order_id, u.firstname, u.lastname, `date` FROM orders JOIN users AS u ON orders.client_id = u.id WHERE pending = 1;";
+						$result = mysqli_query($link, $query);
+						if (!$result)
+						{
+							echo("Błąd zapytania: ".mysqli_error($link));
+							exit();
+						}
+						echo("<table>
+						<tr>
+							<th>id</th>
+							<th>Imię</th>
+                            <th>Nazwisko</th>
+							<th>Data złożenia</th>
+							<th></th>
+						</tr>");
+						while ($row = mysqli_fetch_assoc($result))
+						{
+							echo "<tr>";
+							
+							$count = 0;
+							foreach($row as $i => $value)
+							{
+								$count += 1;
+								if ($count == 3)
+								{
+									echo("<td style='text-align: justify;'>".$value."</td>");
+								}
+								elseif ($count == 5)
+								{
+									echo("<td><a href=mailto:".$value.">".$value."</a></td>");
+								}
+                                else
+                                {
+								    echo("<td>".$value."</td>");
+                                }
+							}
+							echo("<td><a href='order_details.php?id=".$row['order_id']."'style='text-decoration:none'><div class='button'>Szczegóły</div></a></td>");
+							echo "</tr>";
+						}
+						echo("</table>");
+					}
+				?>
+                <?php
+                    if (isset($_GET['closeid']))
+                    {
+                        $id = $_GET['closeid'];
+                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 0, is_closed = '1' WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
+                    }
+                ?>
+				
+				<?php
+					if(isset($_POST['kwerenda3']))
+					{
+						$query = "SELECT order_id, `date`, close_date FROM orders WHERE is_closed = 1;";
+						$result = mysqli_query($link, $query);
+						if (!$result)
+						{
+							echo("Błąd zapytania: ".mysqli_error($link));
+							exit();
+						}
+						echo("<table>
+						<tr>
+							<th>id</th>
+							<th>Data otwarcia</th>
+							<th>Data zakończenia</th>
+                            <th></th>
+						</tr>");
+						while ($row = mysqli_fetch_assoc($result))
+						{
+							echo "<tr>";
+							foreach($row as $i => $value)
+							{
+								echo("<td>".$value."</td>");
+							}
+                            echo("<td><a href='orders.php?reopenid=".$row['id']."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
+							echo "</tr>";
+						}
+						echo("</table>");
+					}
+				?>
+                <?php
+                    if (isset($_GET['reopenid']))
+                    {
+                        $id = $_GET['reopenid'];
+                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 1, is_closed = 0 WHERE id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
+                    }
+                ?>
+				</form>
 			</div>
 		</div>
 		<div id="footer">

@@ -272,6 +272,7 @@ tr:hover
 table .button
 {
 	text-align: center;
+	font-weight: 600;
 	color: white;
 	background-color: #128870;
 	padding: 4px;
@@ -279,10 +280,7 @@ table .button
 
 table .button:hover
 {
-	color: white;
-	text-align: center;
-	background-color: #0e6b59;
-	padding: 4px;
+	background-color: #0e6b59; 
 }
 
 .option2

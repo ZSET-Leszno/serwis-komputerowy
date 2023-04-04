@@ -275,6 +275,9 @@ tr:hover
 	padding-top: 8px;
 	padding-bottom: 8px;
 	border-radius: 5px;
+	background-color: #128870;
+	text-align: center;
+	color: white;
 	font-weight: bolder;
 }
 
@@ -313,12 +316,13 @@ tr:hover
 	padding: 10px;
 	/* border-right: 2px dotted #444444; */
 	opacity: 0.8;
+	border-radius: 5px;
 }
 
 .option2:hover
 {
 	color: white;
-	background-color: #128870;
+	background-color: #0e6b59; 
 	cursor: pointer;
 	border-radius: 5px;
 }

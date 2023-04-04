@@ -55,11 +55,6 @@
 		<br>
 		
 		<div id="sidebar" style="height: 830px;">
-			<a href="home.php">
-				<div class="optionL">
-					Jak to działa?
-				</div>
-			</a>
 
             <a href="order.php">
 				<div class="optionL">

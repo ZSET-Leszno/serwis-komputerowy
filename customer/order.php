@@ -56,11 +56,7 @@
 		
 		<div id="subcontainer">
 		<div id="sidebar" style="height: inherit;">
-			<a href="home.php">
-				<div class="optionL">
-					Jak to działa?
-				</div>
-			</a>
+			
 
 			<a href="order.php">
 				<div class="optionL">

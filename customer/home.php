@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!-- <!DOCTYPE HTML>
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
@@ -189,4 +189,10 @@
 		}
 	</script>
 </body>
-</html>
+</html> -->
+
+<?php
+
+header('Location: order.php');
+
+?>

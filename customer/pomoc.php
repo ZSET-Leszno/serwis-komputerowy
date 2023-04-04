@@ -135,6 +135,30 @@ else
 
 				<form action="help-includer.php" method="post">
 
+				<label for="cars"><small>Wybierz zamówienie, do którego chcesz się odwołać:</small></label><br>
+				<select name="chosen-service" required>
+				<?php
+					$link = mysqli_connect("localhost", "zset_wojcik", "Wojcik_123", "zset_wojcik");
+
+					if (!$link)
+					{
+						die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
+					}
+
+					
+					$query = "SELECT order_id as id, `date` FROM `orders` WHERE client_id = ". $_SESSION['id'] ." ORDER BY id DESC";
+					$result = mysqli_query($link, $query);
+
+					while($row = mysqli_fetch_row($result))
+					{
+						echo "<option value='$row[0]'>ID: $row[0]ㅤㅤData: $row[1]</option>";
+					}					
+
+					mysqli_close($link);
+				?>
+				</select>
+				
+				<br><br>
 				<input type="text" name="help-title" placeholder="Temat twojej wiadomości" style="width: 99%" required>
 
 				<br><br>

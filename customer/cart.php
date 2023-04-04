@@ -163,7 +163,7 @@
 				if (isset($_COOKIE['cart']))
 				{
 					echo 	'<br>
-							<a href="" class="centerer" style="text-decoration: none;">
+							<a href="order-includer.php" class="centerer" style="text-decoration: none;">
 								<div id="orderButton">ZAMÓW</div>
 							</a>';
 				}

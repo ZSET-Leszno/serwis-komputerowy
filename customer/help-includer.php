@@ -16,7 +16,7 @@ if (!$link)
     die("Nie udało się połączyć z bazą danych: " . mysqli_connect_error() ."<br><br>");
 }
 
-mysqli_query($link, "INSERT INTO `help-requests`(`user_id`, `content`, `title`) VALUES ('". $_SESSION['id'] ."', '". $_POST["help-text"] ."', '". $_POST["help-title"] ."');");
+mysqli_query($link, "INSERT INTO `help-requests`(`content`, `title`, `order_id`) VALUES ('". $_POST['help-text'] ."', '". $_POST['help-title'] ."', '". $_POST['chosen-service'] ."')");
 
 mysqli_close($link);
 

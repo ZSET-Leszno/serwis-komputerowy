@@ -269,16 +269,6 @@ tr:hover
 	color: rgb(0, 170, 0);
 }
 
-table .button,
-#orderButton
-{
-	text-align: center;
-	font-weight: 600;
-	color: white;
-	background-color: #128870;
-	padding: 4px;
-}
-
 #orderButton
 {
 	width: 120px;
@@ -299,7 +289,16 @@ table .button,
 	justify-content: center;
 }
 
-table .button:hover
+.button
+{
+	text-align: center;
+	font-weight: 600;
+	color: white;
+	background-color: #128870;
+	padding: 4px;
+}
+
+.button:hover
 {
 	background-color: #0e6b59; 
 }

@@ -226,7 +226,7 @@
                     if (isset($_GET['closeid']))
                     {
                         $id = $_GET['closeid'];
-                        mysqli_query($link ,"UPDATE `orders` SET pending = 0, is_closed = 1 WHERE order_id = ".$id.";");
+                        mysqli_query($link ,"UPDATE `orders` SET pending = 0, is_closed = 1, close_date = current_timestamp() WHERE order_id = ".$id.";");
 						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
                     }
                 ?>

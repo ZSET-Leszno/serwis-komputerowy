@@ -122,7 +122,7 @@
 							{
 								echo("<td>".$value."</td>");
 							}
-                            echo("<td><a href='orders.php?openid=".$row['id']."' style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
+                            echo("<td><a href='orders.php?openid=".$row['order_id']."'style='text-decoration:none'><div class='button'>Otwórz</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -132,7 +132,7 @@
                     if (isset($_GET['openid']))
                     {
                         $id = $_GET['openid'];
-                        mysqli_query($link , "UPDATE orders SET pending = 1 WHERE order_id = 1;");
+                        mysqli_query($link , "UPDATE orders SET pending = 1 WHERE order_id = $id;");
 						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
                     }
                 ?>
@@ -183,14 +183,6 @@
 						echo("</table>");
 					}
 				?>
-                <?php
-                    if (isset($_GET['closeid']))
-                    {
-                        $id = $_GET['closeid'];
-                        mysqli_query($link ,"UPDATE `orders` SET pending = 0, is_closed = '1', close_date=current_timestamp() WHERE order_id = ".$id.";");
-						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
-                    }
-                ?>
 				
 				<?php
 					if(isset($_POST['kwerenda3']))
@@ -216,7 +208,7 @@
 							{
 								echo("<td>".$value."</td>");
 							}
-                            echo("<td><a href='orders.php?reopenid=".$row['id']."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
+                            echo("<td><a href='orders.php?reopenid=".$row["order_id"]."'style='text-decoration:none'><div class='button'>Otwórz ponownie</div></a></td>");
 							echo "</tr>";
 						}
 						echo("</table>");
@@ -226,8 +218,16 @@
                     if (isset($_GET['reopenid']))
                     {
                         $id = $_GET['reopenid'];
-                        mysqli_query($link ,"UPDATE `help-requests` SET pending = 1, is_closed = 0 WHERE id = ".$id.";");
+                        mysqli_query($link ,"UPDATE `orders` SET pending = 1, is_closed = 0 WHERE order_id = ".$id.";");
 						echo '<script>document.querySelector(\'input[name="kwerenda2"]\').click();</script>';
+                    }
+                ?>
+				<?php
+                    if (isset($_GET['closeid']))
+                    {
+                        $id = $_GET['closeid'];
+                        mysqli_query($link ,"UPDATE `orders` SET pending = 0, is_closed = 1 WHERE order_id = ".$id.";");
+						echo '<script>document.querySelector(\'input[name="kwerenda3"]\').click();</script>';
                     }
                 ?>
 				</form>

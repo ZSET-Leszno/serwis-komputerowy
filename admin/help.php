@@ -100,7 +100,7 @@
 				<?php
 					if(isset($_POST['kwerenda1']))
 					{
-						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = '0' AND is_closed = '0';";
+						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN orders ON `help-requests`.`order_id` = orders.order_id JOIN users ON `orders`.`client_id` = users.id WHERE `help-requests`.`is_closed` = 0 AND `help-requests`.pending = 0;";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -150,7 +150,7 @@
                 <?php
 					if(isset($_POST['kwerenda2']))
 					{
-						$query = "SELECT `help-requests`.id, title, content, order_id, users.email, users.firstname, users.lastname FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE pending = 1;   ";
+						$query = "SELECT `help-requests`.id, title, content, orders.order_id, users.email, users.firstname, users.lastname FROM `help-requests` JOIN orders ON `help-requests`.`order_id` = orders.order_id JOIN users ON `orders`.`client_id` = users.id WHERE `help-requests`.`pending` = 1;";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{
@@ -207,7 +207,7 @@
 				<?php
 					if(isset($_POST['kwerenda3']))
 					{
-						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN users ON `help-requests`.user_id = users.id WHERE is_closed = 1;   ";
+						$query = "SELECT `help-requests`.id, title, users.email FROM `help-requests` JOIN orders ON `help-requests`.`order_id` = orders.order_id JOIN users ON `orders`.`client_id` = users.id WHERE `help-requests`.`is_closed` = 1;";
 						$result = mysqli_query($link, $query);
 						if (!$result)
 						{

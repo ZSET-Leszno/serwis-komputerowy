@@ -326,3 +326,8 @@ tr:hover
 	cursor: pointer;
 	border-radius: 5px;
 }
+
+.nostyle tr:hover
+{
+	background-color: #dedede;
+}

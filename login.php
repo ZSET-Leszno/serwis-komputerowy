@@ -73,7 +73,7 @@
         
 
 			<form method="POST" action="login.php">
-				<table id="logintable">
+				<table id="logintable" class="nostyle">
 					<tr>
 						<td>
 							<label for="email">Adres E-mail:</label>

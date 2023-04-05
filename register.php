@@ -180,7 +180,7 @@ validatePhone();
             
 
 			<form method="POST" action="registration.php" id="register">
-				<table id="registertable">
+				<table id="registertable" class="nostyle">
 					<tr>
 						<td>
 							<label for="firstName">Imię:</label>

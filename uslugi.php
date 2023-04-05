@@ -97,10 +97,8 @@
 					{
 						echo "<tr>";
 
-						foreach ($row as $item)
-						{
-							echo "<td>". $item ."</td>";
-						}
+						echo "<td>". $row[0] ."</td>";
+						echo "<td>". number_format($row[1], 2, ',', ' ') ." zł</td>";
 
 						echo "</tr>";
 					}

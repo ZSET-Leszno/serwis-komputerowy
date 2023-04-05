@@ -267,7 +267,7 @@ validatePhone();
 						</td>
 					</tr>
 				</table>
-				<table>
+				<table class="nostyle">
 					<tr>
 						<td>
 							<p id="phone-error" style="color: crimson; font-weight: 600; font-size: 14px;"></p>

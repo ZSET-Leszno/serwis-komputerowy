@@ -34,7 +34,6 @@ foreach (unserialize($_COOKIE['cart']) as $item)
 
 
 mysqli_close($link);
-setcookie('cart', '', time() - 3600);
-header('Location: status.php');
+header('Location: cart-eraser.php');
 
 ?>
